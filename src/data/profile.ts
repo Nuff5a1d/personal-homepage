@@ -23,6 +23,10 @@ export interface ProjectItem {
   tags: string[];
   linkLabel?: LocalizedText;
   linkUrl?: string;
+  downloadLabel?: LocalizedText;
+  downloadUrl?: string;
+  downloadFileName?: string;
+  installSteps?: LocalizedText[];
   secondaryLabel?: LocalizedText;
   secondaryUrl?: string;
 }
@@ -56,15 +60,15 @@ export interface GuestMessage {
 export const PROFILE = {
   /** 基础身份信息 */
   name: {
-    zh: '步奎矢溺',
-    en: 'BuKuiShiNi',
+    zh: 'Kamisama',
+    en: 'Kamisama',
   },
   handle: '@OliverRockwell',
   /** 本地头像路径（位于 public/avatar.webp） */
   avatarUrl: './avatar.webp',
   /** 首屏右侧视觉背景图（位于 public/hero-bg.webp） */
   heroVisualUrl: './hero-bg.webp',
-  avatarMonogram: '步',
+  avatarMonogram: 'K',
   role: {
     zh: '故障浪漫主页',
     en: 'Glitch Romance Hub',
@@ -108,9 +112,12 @@ export const PROFILE = {
   contact: {
     wechatId: 'OliverRockwell',
     wechatQrUrl: './wechat-qr.webp',
-    douyinName: '步奎矢溺',
-    douyinId: 'OliverRockwell',
-    douyinUrl: 'https://www.douyin.com/',
+    /** 微信公众号（填入名称与二维码路径后自动显示） */
+    officialAccountName: '',
+    officialAccountQrUrl: '',
+    douyinName: 'kamisama',
+    douyinId: '22573568',
+    douyinUrl: 'https://www.douyin.com/user/MS4wLjABAAAA54yVIZJcTp0TQChSyDIFac3SflhtRz4unP5jFfitYKM?from_tab_name=main',
     email: 'shuorockwell@gmail.com',
     githubUrl: 'https://github.com/Nuff5a1d',
     /**
@@ -206,7 +213,7 @@ export const PROFILE = {
       ],
       tags: ['AI 音乐', 'AI 视频分镜', '视觉叙事', '抖音作品'],
       linkLabel: { zh: '去抖音看成片', en: 'Watch on Douyin' },
-      linkUrl: 'https://www.douyin.com/',
+      linkUrl: 'https://www.douyin.com/user/MS4wLjABAAAA54yVIZJcTp0TQChSyDIFac3SflhtRz4unP5jFfitYKM?from_tab_name=main',
     },
     {
       id: 'auto-listing-engine',

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   ArrowUpRight,
+  BookOpen,
   Copy,
   Github,
   Mail,
@@ -15,6 +16,7 @@ interface ContactSectionProps {
   lang: Lang;
   onCopy: (text: string, feedback: string) => void;
   onOpenQr: () => void;
+  onOpenOfficialQr: () => void;
   onNotify: (msg: string) => void;
 }
 
@@ -24,6 +26,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   lang,
   onCopy,
   onOpenQr,
+  onOpenOfficialQr,
   onNotify,
 }) => {
   const topics = UI_TEXT.contact.topics[lang];
@@ -208,9 +211,50 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {lang === 'zh' ? '抖音 · ' : 'Douyin · '}
                   {PROFILE.contact.douyinName}
                 </span>
+                {PROFILE.contact.douyinId && (
+                  <span className="text-xs font-mono text-zinc-400 dark:text-zinc-500 hidden sm:inline shrink-0">
+                    ID: {PROFILE.contact.douyinId}
+                  </span>
+                )}
               </div>
               <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] shrink-0" />
             </a>
+
+            {(PROFILE.contact.officialAccountName || PROFILE.contact.officialAccountQrUrl) && (
+              <button
+                type="button"
+                onClick={() => {
+                  if (PROFILE.contact.officialAccountQrUrl) {
+                    onOpenOfficialQr();
+                  } else if (PROFILE.contact.officialAccountName) {
+                    onCopy(
+                      PROFILE.contact.officialAccountName,
+                      lang === 'zh'
+                        ? `已复制公众号名称：${PROFILE.contact.officialAccountName}`
+                        : `Copied Official Account: ${PROFILE.contact.officialAccountName}`
+                    );
+                  }
+                }}
+                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.055] dark:hover:bg-white/[0.08] transition-colors text-left group"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <span className="text-sm font-medium text-[#1D1D1F] dark:text-white truncate">
+                    {lang === 'zh' ? '公众号 · ' : 'WeChat Official · '}
+                    {PROFILE.contact.officialAccountName}
+                  </span>
+                </div>
+                <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 shrink-0">
+                  {PROFILE.contact.officialAccountQrUrl
+                    ? lang === 'zh'
+                      ? '扫码关注'
+                      : 'QR'
+                    : lang === 'zh'
+                      ? '复制搜索'
+                      : 'Copy'}
+                </span>
+              </button>
+            )}
           </div>
         </BentoCard>
 

@@ -5,6 +5,7 @@ import {
   BellRing,
   Check,
   Disc3,
+  Download,
   Layers,
   Play,
   Sparkles,
@@ -272,11 +273,19 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
             </div>
 
             {/* Clean Footer CTA */}
-            <div className="mt-5 pt-4 border-t border-black/[0.05] dark:border-white/[0.07] flex items-center justify-between text-xs">
-              <span className="font-mono text-zinc-400 dark:text-zinc-500">
-                {project.version}
-              </span>
-              <span className="inline-flex items-center gap-1 font-medium text-[#0071E3] dark:text-[#2997FF]">
+            <div className="mt-5 pt-4 border-t border-black/[0.05] dark:border-white/[0.07] flex items-center justify-between text-xs gap-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="font-mono text-zinc-400 dark:text-zinc-500">
+                  {project.version}
+                </span>
+                {project.downloadUrl && (
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/12 text-emerald-700 dark:text-emerald-300 border border-emerald-500/20">
+                    <Download className="w-2.5 h-2.5" />
+                    {lang === 'zh' ? '直链下载' : 'Direct ZIP'}
+                  </span>
+                )}
+              </div>
+              <span className="inline-flex items-center gap-1 font-medium text-[#0071E3] dark:text-[#2997FF] shrink-0">
                 {UI_TEXT.projects.viewDetail[lang]}
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>
@@ -352,7 +361,39 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
               </ul>
             </div>
 
-            <div className="mt-7 pt-5 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-wrap items-center justify-end gap-4">
+            {selectedProject.installSteps && selectedProject.installSteps.length > 0 && (
+              <div className="mt-6 p-4 rounded-2xl bg-emerald-500/[0.06] dark:bg-emerald-500/[0.08] border border-emerald-500/15">
+                <div className="text-xs font-semibold tracking-wider text-emerald-700 dark:text-emerald-300 mb-2">
+                  {lang === 'zh' ? '免 GitHub 快速安装（3 步）' : 'Quick Install (No GitHub Needed)'}
+                </div>
+                <ol className="space-y-1.5 text-xs sm:text-[13px] text-zinc-700 dark:text-zinc-300 list-decimal list-inside">
+                  {selectedProject.installSteps.map((step, i) => (
+                    <li key={i} className="leading-relaxed">
+                      {step[lang]}
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            <div className="mt-7 pt-5 border-t border-black/[0.06] dark:border-white/[0.08] flex flex-wrap items-center justify-end gap-3">
+              {selectedProject.downloadUrl && (
+                <a
+                  href={selectedProject.downloadUrl}
+                  download={selectedProject.downloadFileName || true}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>
+                    {selectedProject.downloadLabel
+                      ? selectedProject.downloadLabel[lang]
+                      : lang === 'zh'
+                        ? '直接下载安装包 (.zip)'
+                        : 'Download Package (.zip)'}
+                  </span>
+                </a>
+              )}
+
               {selectedProject.linkUrl && selectedProject.linkLabel && (
                 <a
                   href={selectedProject.linkUrl}

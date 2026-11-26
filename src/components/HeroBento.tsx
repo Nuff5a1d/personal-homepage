@@ -65,11 +65,11 @@ export const HeroBento: React.FC<HeroBentoProps> = ({ lang, onOpenQr }) => {
             </div>
 
             {/* Keynote Display Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-[46px] xl:text-[54px] font-semibold tracking-[-0.035em] leading-[1.12] titanium-text mb-5 text-balance">
+            <h1 className="text-[28px] sm:text-4xl lg:text-[42px] xl:text-[50px] font-semibold tracking-[-0.02em] leading-[1.36] py-1.5 titanium-text mb-4 text-balance">
               {PROFILE.heroHeadline[lang]}
             </h1>
 
-            <p className="text-base sm:text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl">
+            <p className="text-[15px] sm:text-[17px] leading-[1.75] text-zinc-600 dark:text-zinc-400 max-w-2xl">
               {PROFILE.heroDescription[lang]}
             </p>
           </div>
