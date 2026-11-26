@@ -94,6 +94,55 @@ export const PROFILE = {
     en: 'Sharp tools, raw romance.',
   },
 
+  /** 「AI 的温柔」核心宣言屏 */
+  aiManifesto: {
+    eyebrow: {
+      zh: 'AI MANIFESTO · 创作宣言',
+      en: 'AI MANIFESTO · ON CRAFT',
+    },
+    fullText: {
+      zh: 'AI 最大的温柔，是把曾经高不可攀的技能门槛抹平，让普通人也能平等地把脑洞落地——繁琐的活交给它，留给我们的是现成的成就感，和可以肆意发散、甚至拿来“浪费”的自由时间。',
+      en: 'The greatest gentleness of AI is leveling skills that once felt out of reach, giving ordinary people an equal shot at shipping wild ideas — handing off the tedious grind, leaving us with tangible fulfillment, and free time to wander, dream, and even “waste”.',
+    },
+    segments: [
+      {
+        text: { zh: 'AI 最大的温柔，', en: 'The greatest gentleness of AI ' },
+        highlight: true,
+      },
+      {
+        text: { zh: '是把曾经高不可攀的', en: 'is leveling skills that once felt ' },
+      },
+      {
+        text: { zh: '技能门槛抹平，', en: 'out of reach, ' },
+        highlight: true,
+      },
+      {
+        text: { zh: '让普通人也能', en: 'giving ordinary people an ' },
+      },
+      {
+        text: { zh: '平等地把脑洞落地——', en: 'equal shot at shipping wild ideas — ' },
+        highlight: true,
+      },
+      {
+        text: { zh: '繁琐的活交给它，', en: 'handing off the tedious grind, ' },
+      },
+      {
+        text: { zh: '留给我们的是', en: 'leaving us with ' },
+      },
+      {
+        text: { zh: '现成的成就感，', en: 'tangible fulfillment, ' },
+        highlight: true,
+      },
+      {
+        text: { zh: '和可以肆意发散、', en: 'and free time to wander, dream, ' },
+      },
+      {
+        text: { zh: '甚至拿来“浪费”的自由时间。', en: 'and even “waste”.' },
+        highlight: true,
+      },
+    ] as { text: LocalizedText; highlight?: boolean }[],
+  },
+
   /** 插件联动徽章文案 */
   pluginOriginBanner: {
     zh: '千川 ROI 监控插件作者',
@@ -332,8 +381,8 @@ export const PROFILE = {
         en: 'Why naive DOM scripts break on modern ad dashboards — lessons from handling virtual tables, split headers, and SPA route switching.',
       },
       shareCopy: {
-        zh: '刚把「千川 ROI 实时监控插件」升级到 v1.1.3，总结了用 AI 做插件踩过的 4 个真实大坑，主页里可以看完整复盘与功能细节。',
-        en: 'Just shipped v1.1.3 of my Qianchuan ROI Live Monitor extension — wrote down 4 real engineering pitfalls I solved along the way.',
+        zh: '刚把「千川 ROI 实时监控插件」升级到 v1.3.1，总结了用 AI 做插件踩过的 4 个真实大坑，主页里可以看完整复盘与功能细节。',
+        en: 'Just shipped v1.3.1 of my Qianchuan ROI Live Monitor extension — wrote down 4 real engineering pitfalls I solved along the way.',
       },
       paragraphs: [
         {
@@ -550,8 +599,8 @@ export const UI_TEXT = {
   },
   footer: {
     builtWith: {
-      zh: '用心打磨每一个 Idea · 支持深浅色与中英双语切换',
-      en: 'Crafted with obsession · Dark/Light & Bilingual Ready',
+      zh: 'Crafted with Gemini 4 Neon',
+      en: 'Crafted with Gemini 4 Neon',
     },
   },
 };

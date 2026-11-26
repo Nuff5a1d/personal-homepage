@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { GuestMessage, Lang, PROFILE, UI_TEXT } from '../data/profile';
 import { BentoCard } from './BentoCard';
+import { Reveal } from './Reveal';
 
 interface ContactSectionProps {
   lang: Lang;
@@ -30,7 +31,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   onNotify,
 }) => {
   const topics = UI_TEXT.contact.topics[lang];
-  const [selectedTopic, setSelectedTopic] = useState(topics[0]);
+  const [selectedTopicIdx, setSelectedTopicIdx] = useState(0);
+  const selectedTopic = topics[selectedTopicIdx] ?? topics[0];
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [content, setContent] = useState('');
@@ -48,10 +50,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
     return PROFILE.initialMessages;
   });
-
-  useEffect(() => {
-    setSelectedTopic(UI_TEXT.contact.topics[lang][0]);
-  }, [lang]);
 
   useEffect(() => {
     try {
@@ -179,12 +177,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   return (
     <section id="contact" className="scroll-mt-24 pt-14 sm:pt-18 pb-10">
-      <div className="mb-6">
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-[-0.03em] text-[#1D1D1F] dark:text-white">
-          {lang === 'zh' ? '联系 & 留言' : 'Connect'}
-        </h2>
-      </div>
+      <Reveal>
+        <div className="mb-6">
+          <h2 className="text-2xl sm:text-3xl font-semibold tracking-[-0.03em] text-[#1D1D1F] dark:text-white">
+            {lang === 'zh' ? '联系 & 留言' : 'Connect'}
+          </h2>
+        </div>
+      </Reveal>
 
+      <Reveal delayMs={60}>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
         {/* Left: Clean Dual QR Cards (WeChat + Official Account) & Channels (5 cols) */}
         <BentoCard className="lg:col-span-5 p-6 sm:p-7 flex flex-col justify-between gap-6">
@@ -330,13 +331,13 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             <form onSubmit={handleSubmit} className="space-y-3.5">
               {/* Topic Pills */}
               <div className="flex flex-wrap gap-2">
-                {topics.map((topic) => {
-                  const active = selectedTopic === topic;
+                {topics.map((topic, idx) => {
+                  const active = selectedTopicIdx === idx;
                   return (
                     <button
                       key={topic}
                       type="button"
-                      onClick={() => setSelectedTopic(topic)}
+                      onClick={() => setSelectedTopicIdx(idx)}
                       className={[
                         'px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border',
                         active
@@ -440,6 +441,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
         </BentoCard>
       </div>
+      </Reveal>
     </section>
   );
 };

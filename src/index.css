@@ -46,12 +46,50 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Bento spotlight border & surface hover */
+/* Editorial highlight gradient for AI Manifesto key phrases */
+.manifesto-highlight {
+  background: linear-gradient(115deg, #0071e3 0%, #6366f1 55%, #9333ea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.dark .manifesto-highlight {
+  background: linear-gradient(115deg, #ffffff 0%, #7dd3fc 42%, #c084fc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes manifestoGlitchFlash {
+  0% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+  30% {
+    filter: drop-shadow(-1.5px 0 0 rgba(56, 189, 248, 0.55))
+      drop-shadow(1.5px 0 0 rgba(217, 70, 239, 0.55));
+  }
+  65% {
+    filter: drop-shadow(1px 0 0 rgba(56, 189, 248, 0.35))
+      drop-shadow(-1px 0 0 rgba(217, 70, 239, 0.35));
+  }
+  100% {
+    filter: drop-shadow(0 0 0 transparent);
+  }
+}
+
+.manifesto-decode-pulse {
+  animation: manifestoGlitchFlash 0.48s ease-out;
+}
+
+/* Bento spotlight border & specular edge glow */
 .bento-card {
   position: relative;
   overflow: hidden;
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.35s ease,
     box-shadow 0.35s ease;
 }
@@ -66,7 +104,7 @@
   pointer-events: none;
   background: radial-gradient(
     520px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-    rgba(0, 113, 227, 0.07),
+    rgba(0, 113, 227, 0.075),
     transparent 45%
   );
 }
@@ -79,8 +117,69 @@
   );
 }
 
-.bento-card:hover::before {
+.bento-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    340px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(0, 113, 227, 0.45),
+    transparent 55%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.dark .bento-card::after {
+  background: radial-gradient(
+    340px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(125, 211, 252, 0.48),
+    rgba(192, 132, 252, 0.25) 35%,
+    transparent 60%
+  );
+}
+
+.bento-card:hover::before,
+.bento-card:hover::after {
   opacity: 1;
+}
+
+/* Glitch Romance Overdrive Easter Egg (toggled via Cmd+K) */
+.glitch-overdrive {
+  position: relative;
+}
+
+.glitch-overdrive::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 35;
+  opacity: 0.22;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(41, 151, 255, 0.06) 3px,
+    rgba(41, 151, 255, 0.06) 4px
+  );
+}
+
+.glitch-overdrive .titanium-text {
+  filter: drop-shadow(-1px 0 0 rgba(56, 189, 248, 0.42))
+    drop-shadow(1px 0 0 rgba(217, 70, 239, 0.42));
+}
+
+.glitch-overdrive .bento-card {
+  border-color: rgba(125, 211, 252, 0.22);
 }
 
 /* Hide scrollbars nicely for horizontal filter pills */
@@ -106,4 +205,14 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(113, 113, 122, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-card {
+    transform: none !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .manifesto-decode-pulse {
+    animation: none;
+  }
 }
