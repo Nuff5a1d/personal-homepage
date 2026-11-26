@@ -113,7 +113,7 @@ export const PROFILE = {
     wechatId: 'OliverRockwell',
     wechatQrUrl: './wechat-qr.webp',
     /** 微信公众号（二维码与名称） */
-    officialAccountName: '',
+    officialAccountName: 'Kamisama也是人',
     officialAccountQrUrl: './official-qr.webp',
     douyinName: 'kamisama',
     douyinId: '22573568',
