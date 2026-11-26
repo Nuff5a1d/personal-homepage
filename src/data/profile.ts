@@ -112,9 +112,9 @@ export const PROFILE = {
   contact: {
     wechatId: 'OliverRockwell',
     wechatQrUrl: './wechat-qr.webp',
-    /** 微信公众号（填入名称与二维码路径后自动显示） */
-    officialAccountName: '',
-    officialAccountQrUrl: '',
+    /** 微信公众号（二维码与名称） */
+    officialAccountName: 'Kamisama也是人',
+    officialAccountQrUrl: './official-qr.webp',
     douyinName: 'kamisama',
     douyinId: '22573568',
     douyinUrl: 'https://www.douyin.com/user/MS4wLjABAAAA54yVIZJcTp0TQChSyDIFac3SflhtRz4unP5jFfitYKM?from_tab_name=main',
