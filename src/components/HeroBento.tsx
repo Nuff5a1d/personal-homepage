@@ -1,17 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ArrowUpRight, MessageSquare, QrCode, Zap } from 'lucide-react';
+import { ArrowUpRight, Copy, MessageSquare, QrCode, Zap } from 'lucide-react';
 import { Lang, PROFILE, UI_TEXT } from '../data/profile';
 import { BentoCard } from './BentoCard';
 
 interface HeroBentoProps {
   lang: Lang;
   onOpenQr: () => void;
+  onCopy: (text: string, feedback: string) => void;
   glitchOverdrive?: boolean;
 }
 
 export const HeroBento: React.FC<HeroBentoProps> = ({
   lang,
   onOpenQr,
+  onCopy,
   glitchOverdrive = false,
 }) => {
   const [timeStr, setTimeStr] = useState('');
@@ -55,23 +57,23 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
     <section id="overview" className="scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
         {/* Main Editorial Hero Card (7 cols on lg / 8 cols on xl) */}
-        <BentoCard className="lg:col-span-7 xl:col-span-8 p-7 sm:p-10 lg:p-12 flex flex-col justify-between min-h-[380px] lg:min-h-[460px]">
+        <BentoCard className="lg:col-span-7 xl:col-span-8 p-7 sm:p-10 lg:p-11 flex flex-col justify-between min-h-[380px] lg:min-h-[460px]">
           <div>
-            {/* Clean identity row */}
-            <div className="flex items-center gap-4 mb-7 sm:mb-8">
+            {/* Clean identity row with lightweight inline craft tags */}
+            <div className="flex items-center gap-4 mb-6 sm:mb-7">
               {PROFILE.avatarUrl ? (
                 <img
                   src={PROFILE.avatarUrl}
                   alt={PROFILE.name[lang]}
-                  className="w-16 h-16 sm:w-[72px] sm:h-[72px] rounded-[22px] object-cover ring-1 ring-black/10 dark:ring-white/15 shadow-lg shrink-0"
+                  className="w-14 h-14 sm:w-[68px] sm:h-[68px] rounded-[20px] object-cover ring-1 ring-black/10 dark:ring-white/15 shadow-lg shrink-0"
                 />
               ) : (
-                <div className="w-16 h-16 rounded-[22px] bg-zinc-900 text-white flex items-center justify-center text-xl font-bold shrink-0">
+                <div className="w-14 h-14 rounded-[20px] bg-zinc-900 text-white flex items-center justify-center text-xl font-bold shrink-0">
                   {PROFILE.avatarMonogram}
                 </div>
               )}
 
-              <div>
+              <div className="min-w-0">
                 <div className="flex items-center gap-2.5 flex-wrap">
                   <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1D1D1F] dark:text-white">
                     {PROFILE.name[lang]}
@@ -81,39 +83,72 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
                     {PROFILE.role[lang]}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm font-mono text-zinc-400 dark:text-zinc-500 mt-1">
-                  {PROFILE.handle}
-                </p>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-xs text-zinc-400 dark:text-zinc-500 mt-1">
+                  <span className="font-mono">{PROFILE.handle}</span>
+                  {PROFILE.skills.length > 0 && (
+                    <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">|</span>
+                  )}
+                  <span className="hidden sm:inline text-zinc-500 dark:text-zinc-400 truncate">
+                    {PROFILE.skills.map((s) => s.label[lang]).join(' · ')}
+                  </span>
+                </div>
               </div>
             </div>
 
             {/* Keynote Display Headline */}
-            <h1 className="text-[26px] sm:text-4xl lg:text-[42px] xl:text-[50px] font-semibold tracking-[-0.025em] leading-[1.34] py-1 titanium-text mb-4 text-balance">
+            <h1 className="text-[26px] sm:text-4xl lg:text-[42px] xl:text-[48px] font-semibold tracking-[-0.025em] leading-[1.32] py-1 titanium-text mb-3.5 text-balance">
               {PROFILE.heroHeadline[lang]}
             </h1>
 
-            <p className="text-[15px] sm:text-[17px] leading-[1.75] text-zinc-600 dark:text-zinc-400 max-w-2xl">
+            <p className="text-[15px] sm:text-[16px] leading-[1.72] text-zinc-600 dark:text-zinc-400 max-w-2xl">
               {PROFILE.heroDescription[lang]}
             </p>
 
-            {/* Core Craft / Skills Chips */}
-            {PROFILE.skills.length > 0 && (
-              <div className="flex flex-wrap items-center gap-2 mt-6">
-                {PROFILE.skills.map((skill) => (
+            {/* Inline Editorial Quote Block (方案 A: 扉页引言槽) */}
+            <blockquote
+              id="manifesto"
+              className="group/quote relative mt-5 pl-4 py-0.5 max-w-2xl scroll-mt-28"
+            >
+              {/* Restrained 2px titanium-blue vertical accent line */}
+              <span
+                aria-hidden="true"
+                className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-gradient-to-b from-[#0071E3] via-[#2997FF]/60 to-transparent dark:from-[#2997FF] dark:via-sky-300/45 dark:to-transparent"
+              />
+              <p className="text-[13.5px] sm:text-[14.5px] leading-[1.82] text-zinc-500 dark:text-zinc-400 pr-7">
+                {PROFILE.aiManifesto.segments.map((seg, idx) => (
                   <span
-                    key={skill.label.en}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-black/[0.035] dark:bg-white/[0.06] border border-black/[0.05] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-300"
+                    key={idx}
+                    className={
+                      seg.highlight
+                        ? 'text-[#1D1D1F] dark:text-zinc-100 font-medium'
+                        : undefined
+                    }
                   >
-                    <span className="w-1 h-1 rounded-full bg-[#0071E3] dark:bg-[#2997FF]" />
-                    {skill.label[lang]}
+                    {seg.text[lang]}
                   </span>
                 ))}
-              </div>
-            )}
+              </p>
+              <button
+                type="button"
+                onClick={() =>
+                  onCopy(
+                    PROFILE.aiManifesto.fullText[lang],
+                    lang === 'zh'
+                      ? '已复制「AI 的温柔」金句'
+                      : 'Copied AI Manifesto quote!'
+                  )
+                }
+                aria-label={lang === 'zh' ? '复制金句' : 'Copy quote'}
+                title={lang === 'zh' ? '复制金句' : 'Copy quote'}
+                className="absolute top-0.5 right-0 w-7 h-7 rounded-full flex items-center justify-center text-zinc-400 hover:text-[#1D1D1F] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.08] opacity-60 sm:opacity-0 sm:group-hover/quote:opacity-100 focus:opacity-100 transition-all"
+              >
+                <Copy className="w-3.5 h-3.5" />
+              </button>
+            </blockquote>
           </div>
 
           {/* Minimal Action Row */}
-          <div className="flex flex-wrap items-center gap-3 mt-8 sm:mt-9">
+          <div className="flex flex-wrap items-center gap-3 mt-7 sm:mt-8">
             <a
               href="#projects"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-[#1D1D1F] text-white dark:bg-white dark:text-[#1D1D1F] hover:opacity-90 active:scale-[0.98] transition-all shadow-sm"

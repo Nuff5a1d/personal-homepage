@@ -94,7 +94,7 @@ export const PROFILE = {
     en: 'Sharp tools, raw romance.',
   },
 
-  /** 「AI 的温柔」核心宣言屏 */
+  /** 「AI 的温柔」核心宣言（融入 Hero 扉页引言槽） */
   aiManifesto: {
     eyebrow: {
       zh: 'AI MANIFESTO · 创作宣言',
@@ -106,39 +106,31 @@ export const PROFILE = {
     },
     segments: [
       {
-        text: { zh: 'AI 最大的温柔，', en: 'The greatest gentleness of AI ' },
+        text: { zh: 'AI 最大的温柔，是把曾经高不可攀的', en: 'The greatest gentleness of AI is ' },
+      },
+      {
+        text: { zh: '技能门槛抹平', en: 'leveling once-unreachable skills' },
         highlight: true,
       },
       {
-        text: { zh: '是把曾经高不可攀的', en: 'is leveling skills that once felt ' },
+        text: { zh: '，让普通人也能', en: ', giving ordinary people an ' },
       },
       {
-        text: { zh: '技能门槛抹平，', en: 'out of reach, ' },
+        text: { zh: '平等地把脑洞落地', en: 'equal shot at shipping wild ideas' },
         highlight: true,
       },
       {
-        text: { zh: '让普通人也能', en: 'giving ordinary people an ' },
+        text: {
+          zh: '——繁琐的活交给它，留给我们的是现成的成就感，和可以肆意发散、甚至拿来',
+          en: ' — handing off the tedious grind, leaving us with tangible fulfillment and ',
+        },
       },
       {
-        text: { zh: '平等地把脑洞落地——', en: 'equal shot at shipping wild ideas — ' },
+        text: { zh: '“浪费”的自由时间', en: 'free time to dream and even “waste”' },
         highlight: true,
       },
       {
-        text: { zh: '繁琐的活交给它，', en: 'handing off the tedious grind, ' },
-      },
-      {
-        text: { zh: '留给我们的是', en: 'leaving us with ' },
-      },
-      {
-        text: { zh: '现成的成就感，', en: 'tangible fulfillment, ' },
-        highlight: true,
-      },
-      {
-        text: { zh: '和可以肆意发散、', en: 'and free time to wander, dream, ' },
-      },
-      {
-        text: { zh: '甚至拿来“浪费”的自由时间。', en: 'and even “waste”.' },
-        highlight: true,
+        text: { zh: '。', en: '.' },
       },
     ] as { text: LocalizedText; highlight?: boolean }[],
   },
@@ -285,7 +277,7 @@ export const PROFILE = {
       ],
       tags: ['AI 音乐', 'AI 视频分镜', '视觉叙事', '抖音作品'],
       linkLabel: { zh: '去抖音看成片', en: 'Watch on Douyin' },
-      linkUrl: 'https://www.douyin.com/user/MS4wLjABAAAA54yVIZJcTp0TQChSyDIFac3SflhtRz4unP5jFfitYKM?from_tab_name=main',
+      linkUrl: 'https://www.douyin.com/user/MS4wLjABAAAA0-VCIfJQcYIDyz0dD2xahky64U0ZPxJbR30qX4nlvlIBdh0BjWgC-gpGNpgXkaWq?from_tab_name=main',
     },
     {
       id: 'auto-listing-engine',

@@ -3,7 +3,6 @@ import { Command, Copy, QrCode, Sparkles, X } from 'lucide-react';
 import { CommandPalette } from './components/CommandPalette';
 import { ContactSection } from './components/ContactSection';
 import { HeroBento } from './components/HeroBento';
-import { ManifestoSection } from './components/ManifestoSection';
 import { Navbar } from './components/Navbar';
 import { NotesSection } from './components/NotesSection';
 import { ProjectsSection } from './components/ProjectsSection';
@@ -128,9 +127,9 @@ export default function App() {
         <HeroBento
           lang={lang}
           onOpenQr={() => setQrModal('wechat')}
+          onCopy={handleCopy}
           glitchOverdrive={glitchOverdrive}
         />
-        <ManifestoSection lang={lang} onCopy={handleCopy} />
         <ProjectsSection lang={lang} />
         <NotesSection lang={lang} onCopy={handleCopy} />
         <ContactSection
