@@ -60,10 +60,10 @@ export const PROFILE = {
     en: 'BuKuiShiNi',
   },
   handle: '@OliverRockwell',
-  /** 本地头像路径（位于 public/avatar.jpg） */
-  avatarUrl: './avatar.jpg',
-  /** 首屏右侧视觉背景图（位于 public/hero-bg.jpg） */
-  heroVisualUrl: './hero-bg.jpg',
+  /** 本地头像路径（位于 public/avatar.webp） */
+  avatarUrl: './avatar.webp',
+  /** 首屏右侧视觉背景图（位于 public/hero-bg.webp） */
+  heroVisualUrl: './hero-bg.webp',
   avatarMonogram: '步',
   role: {
     zh: '故障浪漫主页',
@@ -107,7 +107,7 @@ export const PROFILE = {
   /** 联系方式与社媒账号（一键复制 + 扫码卡片） */
   contact: {
     wechatId: 'OliverRockwell',
-    wechatQrUrl: './wechat-qr.jpg',
+    wechatQrUrl: './wechat-qr.webp',
     douyinName: '步奎矢溺',
     douyinId: 'OliverRockwell',
     douyinUrl: 'https://www.douyin.com/',

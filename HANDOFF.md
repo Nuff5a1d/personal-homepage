@@ -41,40 +41,22 @@
 1. **卡点 1：Vercel 注册收不到国内短信验证码（已放弃 Vercel）**
    - 尝试通过 GitHub 登录 Vercel 时，中国电信 `+86` 号段无法收到 SMS 验证码。
    - **结论**：改用 **Cloudflare Pages**（仅需邮箱、免手机验证、免费不限流量、绑独立域名后国内打开较稳）或 **GitHub Pages**（零注册直接启用）。
-2. **卡点 2：正在选购独立域名（待拍板下单）**
-   - **核心关键词**：`kamisama`（卡密撒嘛）
-   - **倾向注册商**：**Spaceship**（支持支付宝、免实名认证、免费 WHOIS 隐私保护、续费透明；不需要走 ICP 备案即可直接绑定海外托管）。
-   - **已确认可注册 & 性价比候选**：
-     - `kamisamalab.com`：首年 ~US$9.48，续费 ~US$10.68（综合最稳、最推荐）
-     - `kamisamahub.com`：首年 ~US$9.48，续费 ~US$10.68
-     - `kamisama.si`：首年 ~US$10.98，续费 ~US$11.98（纯单词短域名）
-     - 待在 Spaceship 实时核查是否可注册：`kamisama.cc`（常规续费约 $8.26）、`kamisama.top`（常规续费约 $4.05）
-   - **避坑记录**：
-     - 已有注册不可买：`kamisama.com` / `.org` / `.ai` / `.net`
-     - 严禁误买高价/高续费：`kamisama.inc`（续费 $2,059/年）、阿里云 `bukuishini.com`（一口价 ¥1,150）、`.studio`（续费 ~$41.6/年）
-3. **卡点 3：旧电脑 Chrome 远程调试连接断开**
-   - 旧电脑上 `DevToolsActivePort` 缺失导致内置浏览器未能自动查完 Spaceship 的剩余后缀，换新电脑后可直接继续查价或手动筛选。
+2. **卡点 2：独立域名已选定并购买完成（✅ 已解决）**
+   - **正式域名**：`https://kamisama.si`（已在 **Spaceship** 购入裸域名，免费 WHOIS 隐私保护、免 ICP 备案）。
+   - **上线前代码优化已完成**：
+     - [index.html](index.html) 已补充 `https://kamisama.si/` 的 `canonical` 与 Open Graph / Twitter 分享卡片元信息（便于微信/朋友圈分享展示）；
+     - `public/` 图片已优化为轻量 WebP（`avatar.webp` 34 KB、`hero-bg.webp` 41 KB、`wechat-qr.webp` 47 KB，保留 `avatar.jpg` 43 KB 供微信分享卡片抓取），总图片体积从 1.07 MB 降至 ~122 KB。
+3. **当前待办（仅剩 Cloudflare Pages 绑定上线）**
+   - 登录 Cloudflare Dashboard（邮箱注册即可）→ **Workers & Pages → Pages → Import an existing Git repository** → 导入 `Nuff5a1d/personal-homepage`（`Vite` / `npm run build` / `dist`）；
+   - 在 Cloudflare 首页添加域名 `kamisama.si`（选 **Free $0**），把 Cloudflare 给的 2 条 Nameservers 填到 Spaceship `kamisama.si` 的 Custom nameservers；
+   - 在 Pages 项目的 **Custom domains** 绑定 `kamisama.si`（及可选 `www.kamisama.si`），等待自动签发 HTTPS 证书生效。
 
 ---
 
-## 四、新电脑接力待办（Next Steps）
+## 四、后续待办（上线后可选）
 
-1. **拉取仓库**：
-   ```bash
-   git clone https://github.com/Nuff5a1d/personal-homepage.git
-   cd personal-homepage
-   npm install
-   ```
-2. **确认并购买 `kamisama` 域名**：在 Spaceship 查完 `kamisama.cc` / `kamisama.top`（或直接买 `kamisamalab.com` / `kamisama.si`），**只买裸域名**，不勾附加主机/邮箱服务。
-3. **部署上线并绑定域名（推荐 Cloudflare Pages）**：
-   - 登录 Cloudflare Dashboard（邮箱注册即可）→ **Workers & Pages → Pages → Connect to Git** → 导入 `Nuff5a1d/personal-homepage`；
-   - 构建配置：Framework 选 `Vite`（Build command: `npm run build`，Build output directory: `dist`）；
-   - 在项目 **Custom domains** 绑定刚买好的独立域名，按提示在 Spaceship 配置 DNS（或直接将 Nameservers 托管到 Cloudflare），等待自动签发 HTTPS 证书。
-   - *（备选：也可直接在 GitHub 仓库 `Settings → Pages` 把 Source 设为 `GitHub Actions` 先出 `https://nuff5a1d.github.io/personal-homepage/`）*
-4. **上线后体验打磨（可选）**：
-   - 将 `public/avatar.jpg`、`public/hero-bg.jpg`、`public/wechat-qr.jpg` 压缩为轻量 WebP，进一步提升国内手机 4G/5G 打开速度；
-   - 在 `src/data/profile.ts` 补充真实抖音主页直链、AI 音乐 MV 作品链接、留言推送 `messageWebhookUrl`；
-   - 拿到正式上线域名后，把个人主页入口链接加到 `qianchuan-roi-monitor` 插件面板里。
+1. 在 `src/data/profile.ts` 补充真实抖音主页直链、AI 音乐 MV 作品链接、留言推送 `messageWebhookUrl`；
+2. 确认 `https://kamisama.si` 正常打开后，把个人主页入口链接加到 `qianchuan-roi-monitor` 插件面板里。
 
 ---
 
