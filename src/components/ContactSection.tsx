@@ -118,29 +118,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
-        {/* Left: Clean Contact & Live WeChat QR Card (5 cols) */}
+        {/* Left: Clean Dual QR Cards (WeChat + Official Account) & Channels (5 cols) */}
         <BentoCard className="lg:col-span-5 p-6 sm:p-7 flex flex-col justify-between gap-6">
-          {/* Embedded Real WeChat QR Card */}
-          <div className="flex flex-col sm:flex-row items-center gap-5 p-4 rounded-2xl bg-black/[0.025] dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.07]">
-            <button
-              type="button"
-              onClick={onOpenQr}
-              className="w-32 h-32 rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-black/5 shrink-0 overflow-hidden hover:scale-[1.03] transition-transform"
-              title={lang === 'zh' ? '点击放大二维码' : 'Click to enlarge QR'}
-            >
-              <img
-                src={PROFILE.contact.wechatQrUrl}
-                alt="WeChat QR"
-                className="w-full h-full object-contain rounded-xl"
-              />
-            </button>
+          {/* Dual QR Showcase */}
+          <div className={PROFILE.contact.officialAccountQrUrl ? 'grid grid-cols-2 gap-3' : ''}>
+            {/* Personal WeChat QR Tile */}
+            <div className="flex flex-col items-center text-center p-4 rounded-2xl bg-black/[0.025] dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.07]">
+              <button
+                type="button"
+                onClick={onOpenQr}
+                className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-black/5 shrink-0 overflow-hidden hover:scale-[1.03] transition-transform"
+                title={lang === 'zh' ? '点击放大微信二维码' : 'Click to enlarge WeChat QR'}
+              >
+                <img
+                  src={PROFILE.contact.wechatQrUrl}
+                  alt="WeChat QR"
+                  className="w-full h-full object-contain rounded-xl"
+                />
+              </button>
 
-            <div className="text-center sm:text-left min-w-0 flex-1">
-              <div className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+              <div className="inline-flex items-center gap-1.5 text-xs font-medium text-emerald-600 dark:text-emerald-400 mt-3">
                 <MessageCircle className="w-3.5 h-3.5" />
-                {lang === 'zh' ? '微信扫码添加' : 'Scan WeChat QR'}
+                {lang === 'zh' ? '个人微信' : 'WeChat'}
               </div>
-              <div className="text-base font-semibold font-mono text-[#1D1D1F] dark:text-white mt-1 truncate">
+              <div className="text-xs sm:text-sm font-semibold font-mono text-[#1D1D1F] dark:text-white mt-0.5 truncate max-w-full">
                 {PROFILE.contact.wechatId}
               </div>
               <button
@@ -153,12 +154,45 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       : `Copied WeChat: ${PROFILE.contact.wechatId}`
                   )
                 }
-                className="mt-3 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 transition-opacity"
+                className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 transition-opacity"
               >
                 <Copy className="w-3 h-3" />
                 {UI_TEXT.contact.copyWechat[lang]}
               </button>
             </div>
+
+            {/* WeChat Official Account QR Tile */}
+            {PROFILE.contact.officialAccountQrUrl && (
+              <div className="flex flex-col items-center text-center p-4 rounded-2xl bg-black/[0.025] dark:bg-white/[0.04] border border-black/[0.05] dark:border-white/[0.07]">
+                <button
+                  type="button"
+                  onClick={onOpenOfficialQr}
+                  className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white p-1.5 shadow-sm ring-1 ring-black/5 shrink-0 overflow-hidden hover:scale-[1.03] transition-transform"
+                  title={lang === 'zh' ? '点击放大公众号二维码' : 'Click to enlarge Official Account QR'}
+                >
+                  <img
+                    src={PROFILE.contact.officialAccountQrUrl}
+                    alt="WeChat Official Account QR"
+                    className="w-full h-full object-contain rounded-xl"
+                  />
+                </button>
+
+                <div className="inline-flex items-center gap-1.5 text-xs font-medium text-[#0071E3] dark:text-[#2997FF] mt-3">
+                  <BookOpen className="w-3.5 h-3.5" />
+                  {lang === 'zh' ? '微信公众号' : 'Official Account'}
+                </div>
+                <div className="text-xs sm:text-sm font-semibold text-[#1D1D1F] dark:text-white mt-0.5 truncate max-w-full">
+                  {PROFILE.contact.officialAccountName || (lang === 'zh' ? '扫码关注动态' : 'Scan to Follow')}
+                </div>
+                <button
+                  type="button"
+                  onClick={onOpenOfficialQr}
+                  className="mt-2.5 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-black/[0.06] dark:bg-white/[0.1] text-[#1D1D1F] dark:text-white hover:bg-black/[0.1] dark:hover:bg-white/[0.16] transition-colors"
+                >
+                  {lang === 'zh' ? '点击放大扫码' : 'Enlarge QR'}
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Direct Channels List */}
@@ -219,42 +253,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] shrink-0" />
             </a>
-
-            {(PROFILE.contact.officialAccountName || PROFILE.contact.officialAccountQrUrl) && (
-              <button
-                type="button"
-                onClick={() => {
-                  if (PROFILE.contact.officialAccountQrUrl) {
-                    onOpenOfficialQr();
-                  } else if (PROFILE.contact.officialAccountName) {
-                    onCopy(
-                      PROFILE.contact.officialAccountName,
-                      lang === 'zh'
-                        ? `已复制公众号名称：${PROFILE.contact.officialAccountName}`
-                        : `Copied Official Account: ${PROFILE.contact.officialAccountName}`
-                    );
-                  }
-                }}
-                className="w-full flex items-center justify-between p-3.5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.055] dark:hover:bg-white/[0.08] transition-colors text-left group"
-              >
-                <div className="flex items-center gap-3 min-w-0">
-                  <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
-                  <span className="text-sm font-medium text-[#1D1D1F] dark:text-white truncate">
-                    {lang === 'zh' ? '公众号 · ' : 'WeChat Official · '}
-                    {PROFILE.contact.officialAccountName}
-                  </span>
-                </div>
-                <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400 shrink-0">
-                  {PROFILE.contact.officialAccountQrUrl
-                    ? lang === 'zh'
-                      ? '扫码关注'
-                      : 'QR'
-                    : lang === 'zh'
-                      ? '复制搜索'
-                      : 'Copy'}
-                </span>
-              </button>
-            )}
           </div>
         </BentoCard>
 

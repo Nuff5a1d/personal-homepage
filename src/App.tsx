@@ -129,7 +129,8 @@ export default function App() {
             </h3>
             <p className="text-xs font-mono text-zinc-500 mt-1">
               {qrModal === 'official'
-                ? PROFILE.contact.officialAccountName
+                ? PROFILE.contact.officialAccountName ||
+                  (lang === 'zh' ? '微信扫一扫 / 长按识别关注' : 'Scan or long-press in WeChat')
                 : `WeChat: ${PROFILE.contact.wechatId}`}
             </p>
 
@@ -151,35 +152,43 @@ export default function App() {
               )}
             </div>
 
-            <button
-              type="button"
-              onClick={() => {
-                const targetText =
-                  qrModal === 'official'
-                    ? PROFILE.contact.officialAccountName
-                    : PROFILE.contact.wechatId;
-                handleCopy(
-                  targetText,
-                  qrModal === 'official'
+            {qrModal === 'official' && !PROFILE.contact.officialAccountName ? (
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                {lang === 'zh'
+                  ? '长按二维码或打开微信「扫一扫」即可关注'
+                  : 'Scan with WeChat to follow updates'}
+              </p>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  const targetText =
+                    qrModal === 'official'
+                      ? PROFILE.contact.officialAccountName
+                      : PROFILE.contact.wechatId;
+                  handleCopy(
+                    targetText,
+                    qrModal === 'official'
+                      ? lang === 'zh'
+                        ? `已复制公众号名称：${targetText}`
+                        : `Copied Official Account: ${targetText}`
+                      : lang === 'zh'
+                        ? `已复制微信号：${targetText}`
+                        : `Copied WeChat: ${targetText}`
+                  );
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 transition-opacity"
+              >
+                <Copy className="w-4 h-4" />
+                <span>
+                  {qrModal === 'official'
                     ? lang === 'zh'
-                      ? `已复制公众号名称：${targetText}`
-                      : `Copied Official Account: ${targetText}`
-                    : lang === 'zh'
-                      ? `已复制微信号：${targetText}`
-                      : `Copied WeChat: ${targetText}`
-                );
-              }}
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 transition-opacity"
-            >
-              <Copy className="w-4 h-4" />
-              <span>
-                {qrModal === 'official'
-                  ? lang === 'zh'
-                    ? '复制公众号名称'
-                    : 'Copy Account Name'
-                  : UI_TEXT.contact.copyWechat[lang]}
-              </span>
-            </button>
+                      ? '复制公众号名称'
+                      : 'Copy Account Name'
+                    : UI_TEXT.contact.copyWechat[lang]}
+                </span>
+              </button>
+            )}
           </div>
         </div>
       )}
