@@ -60,8 +60,8 @@ export interface GuestMessage {
 export const PROFILE = {
   /** 基础身份信息 */
   name: {
-    zh: 'Kamisama也是人',
-    en: 'Kamisama也是人',
+    zh: 'Kamisama',
+    en: 'Kamisama',
   },
   handle: '@OliverRockwell',
   /** 本地头像路径（位于 public/avatar-kamisama.webp） */

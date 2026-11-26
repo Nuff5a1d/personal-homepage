@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
   Compass,
-  Copy,
   Download,
   Languages,
   Mail,
@@ -113,21 +112,6 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         keywords: 'contact message guestbook 联系 留言 微信 邮箱',
         icon: <MessageCircle className="w-4 h-4" />,
         run: () => scrollToSection('contact'),
-      },
-      {
-        id: 'act-copy-manifesto',
-        group: 'action',
-        label: lang === 'zh' ? '复制「AI 的温柔」宣言金句' : 'Copy AI Manifesto Quote',
-        hint: lang === 'zh' ? '一键复制' : 'Copy',
-        keywords: 'copy quote manifesto 复制 金句 宣言 ai',
-        icon: <Copy className="w-4 h-4" />,
-        run: () => {
-          onCopy(
-            PROFILE.aiManifesto.fullText[lang],
-            lang === 'zh' ? '已复制「AI 的温柔」创作宣言' : 'Copied AI Manifesto!'
-          );
-          onClose();
-        },
       },
       {
         id: 'act-copy-email',

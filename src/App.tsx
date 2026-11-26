@@ -127,7 +127,6 @@ export default function App() {
         <HeroBento
           lang={lang}
           onOpenQr={() => setQrModal('wechat')}
-          onCopy={handleCopy}
           glitchOverdrive={glitchOverdrive}
         />
         <ProjectsSection lang={lang} />

@@ -1,19 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { ArrowUpRight, Copy, MessageSquare, QrCode, Zap } from 'lucide-react';
+import { ArrowUpRight, MessageSquare, QrCode, Zap } from 'lucide-react';
 import { Lang, PROFILE, UI_TEXT } from '../data/profile';
 import { BentoCard } from './BentoCard';
 
 interface HeroBentoProps {
   lang: Lang;
   onOpenQr: () => void;
-  onCopy: (text: string, feedback: string) => void;
   glitchOverdrive?: boolean;
 }
 
 export const HeroBento: React.FC<HeroBentoProps> = ({
   lang,
   onOpenQr,
-  onCopy,
   glitchOverdrive = false,
 }) => {
   const [timeStr, setTimeStr] = useState('');
@@ -104,17 +102,17 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
               {PROFILE.heroDescription[lang]}
             </p>
 
-            {/* Inline Editorial Quote Block (方案 A: 扉页引言槽) */}
+            {/* Inline Editorial Quote Block */}
             <blockquote
               id="manifesto"
-              className="group/quote relative mt-5 pl-4 py-0.5 max-w-2xl scroll-mt-28"
+              className="relative mt-5 pl-4 py-0.5 max-w-2xl scroll-mt-28"
             >
               {/* Restrained 2px titanium-blue vertical accent line */}
               <span
                 aria-hidden="true"
                 className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-gradient-to-b from-[#0071E3] via-[#2997FF]/60 to-transparent dark:from-[#2997FF] dark:via-sky-300/45 dark:to-transparent"
               />
-              <p className="text-[13.5px] sm:text-[14.5px] leading-[1.82] text-zinc-500 dark:text-zinc-400 pr-7">
+              <p className="text-[13.5px] sm:text-[14.5px] leading-[1.82] text-zinc-500 dark:text-zinc-400">
                 {PROFILE.aiManifesto.segments.map((seg, idx) => (
                   <span
                     key={idx}
@@ -128,22 +126,6 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
                   </span>
                 ))}
               </p>
-              <button
-                type="button"
-                onClick={() =>
-                  onCopy(
-                    PROFILE.aiManifesto.fullText[lang],
-                    lang === 'zh'
-                      ? '已复制「AI 的温柔」金句'
-                      : 'Copied AI Manifesto quote!'
-                  )
-                }
-                aria-label={lang === 'zh' ? '复制金句' : 'Copy quote'}
-                title={lang === 'zh' ? '复制金句' : 'Copy quote'}
-                className="absolute top-0.5 right-0 w-7 h-7 rounded-full flex items-center justify-center text-zinc-400 hover:text-[#1D1D1F] dark:hover:text-white hover:bg-black/[0.05] dark:hover:bg-white/[0.08] opacity-60 sm:opacity-0 sm:group-hover/quote:opacity-100 focus:opacity-100 transition-all"
-              >
-                <Copy className="w-3.5 h-3.5" />
-              </button>
             </blockquote>
           </div>
 
