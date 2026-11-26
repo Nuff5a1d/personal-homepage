@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Apple-grade subtle ambient glow */
+.ambient-backdrop {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -15%, rgba(41, 151, 255, 0.14), transparent 65%),
+    radial-gradient(ellipse 60% 45% at 85% 15%, rgba(168, 85, 247, 0.08), transparent 60%);
+}
+
+.dark .ambient-backdrop {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -15%, rgba(41, 151, 255, 0.18), transparent 62%),
+    radial-gradient(ellipse 55% 45% at 88% 12%, rgba(168, 85, 247, 0.13), transparent 58%),
+    radial-gradient(ellipse 50% 40% at 12% 35%, rgba(56, 189, 248, 0.07), transparent 60%);
+}
+
+/* Titanium text gradient */
+.titanium-text {
+  background: linear-gradient(180deg, #1d1d1f 0%, #52525b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .titanium-text {
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Bento spotlight border & surface hover */
+.bento-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(0, 113, 227, 0.07),
+    transparent 45%
+  );
+}
+
+.dark .bento-card::before {
+  background: radial-gradient(
+    520px circle at var(--spot-x, 50%) var(--spot-y, 50%),
+    rgba(255, 255, 255, 0.075),
+    transparent 45%
+  );
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+/* Hide scrollbars nicely for horizontal filter pills */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom sleek scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(113, 113, 122, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(113, 113, 122, 0.5);
+}
