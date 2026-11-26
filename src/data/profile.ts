@@ -121,8 +121,14 @@ export const PROFILE = {
     email: 'shuorockwell@gmail.com',
     githubUrl: 'https://github.com/Nuff5a1d',
     /**
-     * 可选：配置留言推送 Webhook（如企业微信机器人 / 飞书机器人 / Formspree 接口）
-     * 留空时，留言会直接保存在浏览器本地并即时显示在留言墙中。
+     * Web3Forms 公开 Access Key（访问 https://web3forms.com/ 填邮箱即可免费获取）
+     * 配置后每条留言都会自动发邮件到你的邮箱（含对方填写的微信/邮箱）。
+     * 也可以在 Cloudflare Pages 环境变量配置 VITE_WEB3FORMS_ACCESS_KEY。
+     */
+    web3formsAccessKey: '',
+    /**
+     * 可选：额外自定义 Webhook（微信推送已由 Cloudflare Pages Function /api/message 处理，
+     * 只需在 Cloudflare Pages 后台环境变量配 WECOM_WEBHOOK_URL 或 PUSHPLUS_TOKEN 即可，密钥不暴露在代码中）
      */
     messageWebhookUrl: '',
   },

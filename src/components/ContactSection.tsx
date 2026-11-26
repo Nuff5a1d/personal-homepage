@@ -61,9 +61,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     }
   }, [messages]);
 
+  const [botcheck, setBotcheck] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (botcheck) return;
+
     const trimmedName = name.trim();
+    const trimmedContact = contact.trim();
     const trimmedContent = content.trim();
     if (!trimmedName || !trimmedContent) {
       onNotify(
@@ -79,22 +84,85 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     const newMessage: GuestMessage = {
       id: `msg-${Date.now()}`,
       name: trimmedName,
-      contact: contact.trim() || undefined,
+      contact: trimmedContact || undefined,
       topic: selectedTopic,
       content: trimmedContent,
       createdAt: today,
     };
 
+    const requests: Promise<unknown>[] = [];
+
+    // 1. 邮件通知（Web3Forms → Gmail，官方要求客户端直接提交）
+    const web3formsKey = (
+      import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ||
+      PROFILE.contact.web3formsAccessKey ||
+      ''
+    ).trim();
+
+    if (web3formsKey) {
+      const emailPayload: Record<string, string> = {
+        access_key: web3formsKey,
+        subject: `【kamisama.si 新留言】${selectedTopic} - 来自 ${trimmedName}`,
+        from_name: 'kamisama.si 个人主页',
+        name: trimmedName,
+        topic: selectedTopic,
+        contact: trimmedContact || '未填写',
+        message: [
+          `主题：${selectedTopic}`,
+          `称呼：${trimmedName}`,
+          `联系方式（微信/邮箱）：${trimmedContact || '未填写'}`,
+          ``,
+          `留言内容：`,
+          trimmedContent,
+        ].join('\n'),
+      };
+      if (trimmedContact.includes('@')) {
+        emailPayload.replyto = trimmedContact;
+      }
+
+      requests.push(
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(emailPayload),
+        })
+      );
+    }
+
+    // 2. 微信推送（Cloudflare Pages Function /api/message → 企微机器人 / PushPlus / 飞书 / Bark）
+    requests.push(
+      fetch('/api/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: trimmedName,
+          contact: trimmedContact,
+          topic: selectedTopic,
+          content: trimmedContent,
+          createdAt: today,
+          botcheck: '',
+        }),
+      })
+    );
+
+    // 3. 兼容额外自定义 Webhook
     if (PROFILE.contact.messageWebhookUrl) {
-      try {
-        await fetch(PROFILE.contact.messageWebhookUrl, {
+      requests.push(
+        fetch(PROFILE.contact.messageWebhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(newMessage),
-        });
-      } catch {
-        // Still persist locally
-      }
+        })
+      );
+    }
+
+    try {
+      await Promise.allSettled(requests);
+    } catch {
+      // Still persist locally even if network fails
     }
 
     setMessages((prev) => [newMessage, ...prev].slice(0, 20));
@@ -104,8 +172,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setSubmitting(false);
     onNotify(
       lang === 'zh'
-        ? '留言已发布！感谢你的来信'
-        : 'Message posted! Thanks for reaching out'
+        ? '留言已发送！我会在微信/邮箱收到你的联系方式与留言'
+        : 'Message sent! I will receive your note and contact info'
     );
   };
 
@@ -310,7 +378,24 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 className="w-full px-4 py-3 rounded-2xl text-sm bg-black/[0.03] dark:bg-white/[0.05] border border-black/[0.06] dark:border-white/[0.09] text-[#1D1D1F] dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[#0071E3]/40 dark:focus:ring-[#2997FF]/40 transition-all resize-none"
               />
 
-              <div className="flex items-center justify-end">
+              {/* Anti-spam honeypot */}
+              <input
+                type="text"
+                name="botcheck"
+                value={botcheck}
+                onChange={(e) => setBotcheck(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+                className="hidden"
+                aria-hidden="true"
+              />
+
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <span className="text-[11px] text-zinc-400 dark:text-zinc-500">
+                  {lang === 'zh'
+                    ? '联系方式仅作者私密可见，不会在页面公开'
+                    : 'Your contact info stays private and is sent directly to me'}
+                </span>
                 <button
                   type="submit"
                   disabled={submitting}
