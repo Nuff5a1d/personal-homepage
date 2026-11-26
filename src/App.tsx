@@ -20,7 +20,7 @@ export default function App() {
   });
 
   const [toastMsg, setToastMsg] = useState<string | null>(null);
-  const [qrOpen, setQrOpen] = useState(false);
+  const [qrModal, setQrModal] = useState<'wechat' | 'official' | null>(null);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -82,13 +82,14 @@ export default function App() {
       />
 
       <main className="w-full max-w-[1800px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pb-14">
-        <HeroBento lang={lang} onOpenQr={() => setQrOpen(true)} />
+        <HeroBento lang={lang} onOpenQr={() => setQrModal('wechat')} />
         <ProjectsSection lang={lang} />
         <NotesSection lang={lang} onCopy={handleCopy} />
         <ContactSection
           lang={lang}
           onCopy={handleCopy}
-          onOpenQr={() => setQrOpen(true)}
+          onOpenQr={() => setQrModal('wechat')}
+          onOpenOfficialQr={() => setQrModal('official')}
           onNotify={showToast}
         />
       </main>
@@ -100,11 +101,11 @@ export default function App() {
         <div className="font-mono">{PROFILE.handle}</div>
       </footer>
 
-      {/* WeChat QR Code Enlarged Modal */}
-      {qrOpen && (
+      {/* WeChat / Official Account QR Code Enlarged Modal */}
+      {qrModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-md"
-          onClick={() => setQrOpen(false)}
+          onClick={() => setQrModal(null)}
         >
           <div
             className="w-full max-w-sm rounded-[32px] bg-white dark:bg-[#161618] border border-black/10 dark:border-white/12 shadow-2xl p-6 text-center relative"
@@ -112,7 +113,7 @@ export default function App() {
           >
             <button
               type="button"
-              onClick={() => setQrOpen(false)}
+              onClick={() => setQrModal(null)}
               aria-label="Close QR modal"
               className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/[0.05] dark:bg-white/[0.08] flex items-center justify-center text-zinc-500 hover:text-[#1D1D1F] dark:hover:text-white transition-colors"
             >
@@ -120,17 +121,29 @@ export default function App() {
             </button>
 
             <h3 className="text-lg font-semibold text-[#1D1D1F] dark:text-white">
-              {UI_TEXT.contact.qrModalTitle[lang]}
+              {qrModal === 'official'
+                ? lang === 'zh'
+                  ? '关注我的公众号'
+                  : 'Follow Official Account'
+                : UI_TEXT.contact.qrModalTitle[lang]}
             </h3>
             <p className="text-xs font-mono text-zinc-500 mt-1">
-              WeChat: {PROFILE.contact.wechatId}
+              {qrModal === 'official'
+                ? PROFILE.contact.officialAccountName
+                : `WeChat: ${PROFILE.contact.wechatId}`}
             </p>
 
             <div className="my-5 mx-auto w-64 h-64 rounded-3xl bg-white p-2.5 shadow-inner border border-black/5 flex items-center justify-center overflow-hidden">
-              {PROFILE.contact.wechatQrUrl ? (
+              {(qrModal === 'official'
+                ? PROFILE.contact.officialAccountQrUrl
+                : PROFILE.contact.wechatQrUrl) ? (
                 <img
-                  src={PROFILE.contact.wechatQrUrl}
-                  alt="WeChat QR Code"
+                  src={
+                    qrModal === 'official'
+                      ? PROFILE.contact.officialAccountQrUrl
+                      : PROFILE.contact.wechatQrUrl
+                  }
+                  alt={qrModal === 'official' ? 'Official Account QR Code' : 'WeChat QR Code'}
                   className="w-full h-full object-contain rounded-2xl"
                 />
               ) : (
@@ -141,17 +154,31 @@ export default function App() {
             <button
               type="button"
               onClick={() => {
+                const targetText =
+                  qrModal === 'official'
+                    ? PROFILE.contact.officialAccountName
+                    : PROFILE.contact.wechatId;
                 handleCopy(
-                  PROFILE.contact.wechatId,
-                  lang === 'zh'
-                    ? `已复制微信号：${PROFILE.contact.wechatId}`
-                    : `Copied WeChat: ${PROFILE.contact.wechatId}`
+                  targetText,
+                  qrModal === 'official'
+                    ? lang === 'zh'
+                      ? `已复制公众号名称：${targetText}`
+                      : `Copied Official Account: ${targetText}`
+                    : lang === 'zh'
+                      ? `已复制微信号：${targetText}`
+                      : `Copied WeChat: ${targetText}`
                 );
               }}
               className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium bg-[#1D1D1F] dark:bg-white text-white dark:text-[#1D1D1F] hover:opacity-90 transition-opacity"
             >
               <Copy className="w-4 h-4" />
-              <span>{UI_TEXT.contact.copyWechat[lang]}</span>
+              <span>
+                {qrModal === 'official'
+                  ? lang === 'zh'
+                    ? '复制公众号名称'
+                    : 'Copy Account Name'
+                  : UI_TEXT.contact.copyWechat[lang]}
+              </span>
             </button>
           </div>
         </div>
