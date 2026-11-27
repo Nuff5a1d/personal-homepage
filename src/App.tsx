@@ -41,10 +41,7 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem('homepage_lang', lang);
-    document.title =
-      lang === 'zh'
-        ? `${PROFILE.name.zh} · 故障浪漫主页`
-        : `${PROFILE.name.en} · Glitch Romance Hub`;
+    document.title = PROFILE.name[lang];
   }, [lang]);
 
   // Global Cmd+K / Ctrl+K shortcut for Command Palette

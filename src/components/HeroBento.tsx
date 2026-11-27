@@ -55,10 +55,10 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
     <section id="overview" className="scroll-mt-24">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-6">
         {/* Main Editorial Hero Card (7 cols on lg / 8 cols on xl) */}
-        <BentoCard className="lg:col-span-7 xl:col-span-8 p-7 sm:p-10 lg:p-11 flex flex-col justify-between min-h-[380px] lg:min-h-[460px]">
+        <BentoCard className="lg:col-span-7 xl:col-span-8 p-7 sm:p-10 lg:p-11 flex flex-col justify-between min-h-[340px] lg:min-h-[420px]">
           <div>
             {/* Clean identity row with lightweight inline craft tags */}
-            <div className="flex items-center gap-4 mb-6 sm:mb-7">
+            <div className="flex items-center gap-4 mb-7 sm:mb-8">
               {PROFILE.avatarUrl ? (
                 <img
                   src={PROFILE.avatarUrl}
@@ -73,9 +73,9 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
 
               <div className="min-w-0">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <h2 className="text-xl sm:text-2xl font-semibold tracking-tight text-[#1D1D1F] dark:text-white">
+                  <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-[#1D1D1F] dark:text-white">
                     {PROFILE.name[lang]}
-                  </h2>
+                  </h1>
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-black/[0.045] dark:bg-white/[0.08] text-zinc-600 dark:text-zinc-300">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     {PROFILE.role[lang]}
@@ -93,12 +93,8 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
               </div>
             </div>
 
-            {/* Keynote Display Headline */}
-            <h1 className="text-[26px] sm:text-4xl lg:text-[42px] xl:text-[48px] font-semibold tracking-[-0.025em] leading-[1.32] py-1 titanium-text mb-3.5 text-balance">
-              {PROFILE.heroHeadline[lang]}
-            </h1>
-
-            <p className="text-[15px] sm:text-[16px] leading-[1.72] text-zinc-600 dark:text-zinc-400 max-w-2xl">
+            {/* Lead Editorial Intro */}
+            <p className="text-[18px] sm:text-[21px] lg:text-[23px] font-medium tracking-[-0.015em] leading-[1.65] text-[#1D1D1F] dark:text-zinc-100 max-w-2xl">
               {PROFILE.heroDescription[lang]}
             </p>
 
@@ -160,7 +156,7 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
         <BentoCard
           onMouseMove={handleVisualMove}
           onMouseLeave={handleVisualLeave}
-          className="lg:col-span-5 xl:col-span-4 relative min-h-[380px] lg:min-h-[460px] p-0 overflow-hidden group"
+          className="lg:col-span-5 xl:col-span-4 relative min-h-[340px] lg:min-h-[420px] p-0 overflow-hidden group"
         >
           <img
             src={PROFILE.heroVisualUrl}

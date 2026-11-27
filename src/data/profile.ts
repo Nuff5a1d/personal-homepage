@@ -70,20 +70,20 @@ export const PROFILE = {
   heroVisualUrl: './hero-bg.webp',
   avatarMonogram: 'K',
   role: {
-    zh: '故障浪漫主页',
-    en: 'Glitch Romance Hub',
+    zh: 'K神の主页',
+    en: "K's Hub",
   },
   heroHeadline: {
-    zh: '一句话太短了，介绍不完。',
-    en: 'One sentence is too short to sum me up.',
+    zh: '',
+    en: '',
   },
   heroDescription: {
     zh: '用 AI 写趁手的效率工具，也拍有情绪的视听作品——把脑海里的 Idea，一一做成真实存在的东西。',
     en: 'Building sharp AI tools and atmospheric visual works — turning sparks of ideas into shipped reality.',
   },
   statusBadge: {
-    zh: '故障浪漫主页',
-    en: 'Glitch Romance Hub',
+    zh: 'K神の主页',
+    en: "K's Hub",
   },
   location: {
     zh: '陕西 · 信号在线',
