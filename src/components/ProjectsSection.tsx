@@ -90,7 +90,7 @@ const RoiMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           {lang === 'zh' ? '秒级监控中' : 'Live Guard'}
         </span>
-        <span className="font-mono text-zinc-500">v1.3.3</span>
+        <span className="font-mono text-zinc-500">v1.3.4</span>
       </div>
 
       <div className="flex items-end justify-between gap-3">

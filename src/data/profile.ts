@@ -185,7 +185,7 @@ export const PROFILE = {
       id: 'qianchuan-roi-monitor',
       category: 'tool',
       status: 'live',
-      version: 'v1.3.3',
+      version: 'v1.3.4',
       featured: true,
       visualType: 'roi',
       title: {
@@ -197,12 +197,12 @@ export const PROFILE = {
         en: 'ROI, Spend, Balance, Budget Cap & Protection Guard · Chrome Extension',
       },
       summary: {
-        zh: '全链路千川 Chrome 扩展（v1.3.3）。秒级盯盘 ROI、消耗、账户可用余额、预算撞墙与灰保过保；支持单类告警冷却合并、30 分钟内置逻辑 / AI 复盘总结与五大渠道手机实时推送。',
-        en: 'Full-funnel Qianchuan Chrome extension (v1.3.3). Tracks ROI, spend, account balance, budget caps & protection status with per-type cooldown merging, 30-min built-in/AI summary reports, and 5-channel mobile alerts.',
+        zh: '全链路千川 Chrome 扩展（v1.3.4）。秒级盯盘 ROI、消耗、账户可用余额、预算撞墙与灰保过保；支持单类告警冷却合并、30 分钟极简短行 AI/内置复盘（含流速/余额可撑时长/隐形下滑识别）、悬浮球自由拖动与五大渠道手机实时推送。',
+        en: 'Full-funnel Qianchuan Chrome extension (v1.3.4). Tracks ROI, spend, account balance, budget caps & protection status with per-type cooldown merging, crisp 30-min AI/built-in summaries, draggable floating pill, and 5-channel mobile alerts.',
       },
       story: {
-        zh: '最初只是不想再为盯盘耗尽精力，用 AI 一边拆解千川复杂的双表 DOM 与虚拟滚动结构，一边从 v1.0 迭代到 v1.3.3。把真实投流踩过的坑——目标 ROI 干扰列、预算撞墙、灰保过保、余额预警、异常冷却合并、页面静默卡死——全部写成了稳定可靠的防守机制。',
-        en: 'Born from the frustration of manually watching ad spend. Iterated rapidly with AI to v1.3.3, solving split DOM headers, budget-cap alerts, balance warnings, cooldown merging, virtual scrolling, and silent page freezes.',
+        zh: '最初只是不想再为盯盘耗尽精力，用 AI 一边拆解千川复杂的双表 DOM 与虚拟滚动结构，一边从 v1.0 迭代到 v1.3.4。把真实投流踩过的坑——目标 ROI 干扰列、预算撞墙、灰保过保、余额预警、异常冷却合并、页面静默卡死——全部写成了稳定可靠的防守机制。',
+        en: 'Born from the frustration of manually watching ad spend. Iterated rapidly with AI to v1.3.4, solving split DOM headers, budget-cap alerts, balance warnings, cooldown merging, virtual scrolling, and silent page freezes.',
       },
       highlights: [
         {
@@ -223,13 +223,13 @@ export const PROFILE = {
         },
       ],
       tags: ['Chrome MV3', '免 GitHub 直下', 'AI 复盘', '五通道告警'],
-      downloadLabel: { zh: '直接下载安装包 (v1.3.3)', en: 'Download ZIP (v1.3.3)' },
-      downloadUrl: './downloads/Kamisama-Qianchuan-v1.3.3.zip',
-      downloadFileName: 'Kamisama-Qianchuan-v1.3.3.zip',
+      downloadLabel: { zh: '直接下载安装包 (v1.3.4)', en: 'Download ZIP (v1.3.4)' },
+      downloadUrl: './downloads/Kamisama-Qianchuan-v1.3.4.zip',
+      downloadFileName: 'Kamisama-Qianchuan-v1.3.4.zip',
       installSteps: [
         {
-          zh: '点击下方「直接下载安装包」获取 Kamisama-Qianchuan-v1.3.3.zip，双击解压出文件夹（老版本直接覆盖原目录重载即可保留配置）。',
-          en: 'Click "Download ZIP" below and unzip Kamisama-Qianchuan-v1.3.3.zip into a folder (overwrite existing folder to keep settings).',
+          zh: '点击下方「直接下载安装包」获取 Kamisama-Qianchuan-v1.3.4.zip，双击解压出文件夹（老版本直接覆盖原目录重载即可保留配置）。',
+          en: 'Click "Download ZIP" below and unzip Kamisama-Qianchuan-v1.3.4.zip into a folder (overwrite existing folder to keep settings).',
         },
         {
           zh: '在 Chrome 地址栏输入 chrome://extensions（Edge 输入 edge://extensions），打开右上角「开发者模式」。',
@@ -342,8 +342,8 @@ export const PROFILE = {
         en: 'Why naive DOM scripts break on modern ad dashboards — lessons from handling virtual tables, split headers, and SPA route switching.',
       },
       shareCopy: {
-        zh: '刚把「Kamisama 全链路千川监控插件」升级到 v1.3.3，主页里可以直接下载体验。',
-        en: 'Just shipped v1.3.3 of Kamisama Qianchuan Monitor — available for direct download on my homepage.',
+        zh: '刚把「Kamisama 全链路千川监控插件」升级到 v1.3.4，主页里可以直接下载体验。',
+        en: 'Just shipped v1.3.4 of Kamisama Qianchuan Monitor — available for direct download on my homepage.',
       },
       paragraphs: [
         {
