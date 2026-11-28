@@ -84,6 +84,67 @@
   animation: manifestoGlitchFlash 0.48s ease-out;
 }
 
+/* Spatial Hero Visual Motion ("大千世界" living cloud-sea & Apple glass aura) */
+@keyframes heroSpatialBreathe {
+  0% {
+    transform: scale(1.06) translate3d(0%, 0%, 0);
+  }
+  35% {
+    transform: scale(1.13) translate3d(-1.4%, -1.8%, 0);
+  }
+  70% {
+    transform: scale(1.1) translate3d(1.2%, -0.9%, 0);
+  }
+  100% {
+    transform: scale(1.06) translate3d(0%, 0%, 0);
+  }
+}
+
+@keyframes heroMistDrift {
+  0% {
+    transform: translate3d(-14%, 2%, 0) scale(1.05);
+    opacity: 0.32;
+  }
+  50% {
+    transform: translate3d(12%, -3%, 0) scale(1.12);
+    opacity: 0.52;
+  }
+  100% {
+    transform: translate3d(-14%, 2%, 0) scale(1.05);
+    opacity: 0.32;
+  }
+}
+
+@keyframes heroLightSweep {
+  0% {
+    transform: translate3d(-35%, -25%, 0) rotate(-18deg);
+    opacity: 0.22;
+  }
+  50% {
+    transform: translate3d(25%, 10%, 0) rotate(-14deg);
+    opacity: 0.42;
+  }
+  100% {
+    transform: translate3d(-35%, -25%, 0) rotate(-18deg);
+    opacity: 0.22;
+  }
+}
+
+.hero-spatial-breathe {
+  animation: heroSpatialBreathe 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.hero-mist-layer {
+  animation: heroMistDrift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.hero-light-sweep {
+  animation: heroLightSweep 14s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 /* Bento spotlight border & specular edge glow */
 .bento-card {
   position: relative;
@@ -212,7 +273,10 @@
     transform: none !important;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .manifesto-decode-pulse {
+  .manifesto-decode-pulse,
+  .hero-spatial-breathe,
+  .hero-mist-layer,
+  .hero-light-sweep {
     animation: none;
   }
 }

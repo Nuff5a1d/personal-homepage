@@ -66,8 +66,8 @@ export const PROFILE = {
   handle: '@OliverRockwell',
   /** 本地头像路径（位于 public/avatar-kamisama.webp） */
   avatarUrl: './avatar-kamisama.webp',
-  /** 首屏右侧视觉背景图（位于 public/hero-bg.webp） */
-  heroVisualUrl: './hero-bg.webp',
+  /** 首屏右侧视觉背景图（位于 public/hero-daqian.webp） */
+  heroVisualUrl: './hero-daqian.webp',
   avatarMonogram: 'K',
   role: {
     zh: 'K神の主页',

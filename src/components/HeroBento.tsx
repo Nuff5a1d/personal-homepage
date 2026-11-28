@@ -147,25 +147,56 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
           </div>
         </BentoCard>
 
-        {/* Right Full-Bleed Apple Titanium & Glass Visual Card (5 cols on lg / 4 cols on xl) */}
+        {/* Right Full-Bleed Spatial "大千世界" Cloud-Sea Visual Card (5 cols on lg / 4 cols on xl) */}
         <BentoCard
           onMouseMove={handleVisualMove}
           onMouseLeave={handleVisualLeave}
           className="lg:col-span-5 xl:col-span-4 relative min-h-[340px] lg:min-h-[420px] p-0 overflow-hidden group"
         >
-          <img
-            src={PROFILE.heroVisualUrl}
-            alt={PROFILE.role[lang]}
+          {/* Layer 1: Interactive mouse spatial parallax + continuous Ken Burns breathing motion */}
+          <div
             style={{
-              transform: `scale(1.06) translate3d(${parallax.x}px, ${parallax.y}px, 0)`,
+              transform: `translate3d(${parallax.x}px, ${parallax.y}px, 0)`,
             }}
-            className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-500 ease-out dark:brightness-[0.78] dark:contrast-[1.08]"
-          />
-          {/* Subtle adaptive light/dark editorial scrim */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-white/10 dark:from-black/70 dark:via-black/15 dark:to-transparent" />
+            className="absolute inset-0 transition-transform duration-500 ease-out"
+          >
+            <img
+              src={PROFILE.heroVisualUrl}
+              alt={PROFILE.role[lang]}
+              className="w-full h-full object-cover object-[50%_38%] hero-spatial-breathe brightness-[1.03] contrast-[1.04] saturate-[0.9] dark:brightness-[0.74] dark:contrast-[1.12] dark:saturate-[0.86] transition-[filter] duration-500"
+            />
+          </div>
 
-          {/* Top-right subtle signal telemetry pill */}
-          <div className="absolute top-4 right-4 sm:top-5 sm:right-5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono bg-white/65 dark:bg-black/45 backdrop-blur-xl border border-white/60 dark:border-white/15 text-[#1D1D1F] dark:text-white/90 shadow-sm">
+          {/* Layer 2: Drifting volumetric cloud-sea mist across the stone archway */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-x-1/4 top-[38%] bottom-0 hero-mist-layer mix-blend-screen dark:mix-blend-soft-light"
+            style={{
+              background:
+                'radial-gradient(ellipse 65% 48% at 50% 62%, rgba(255, 255, 255, 0.52), rgba(186, 230, 253, 0.22) 48%, transparent 75%)',
+            }}
+          />
+
+          {/* Layer 3: Subtle Apple sapphire-blue & lavender diagonal optical sheen */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -inset-1/2 hero-light-sweep mix-blend-soft-light"
+            style={{
+              background:
+                'linear-gradient(115deg, transparent 28%, rgba(41, 151, 255, 0.34) 46%, rgba(192, 132, 252, 0.24) 54%, transparent 72%)',
+            }}
+          />
+
+          {/* Adaptive tone-harmony scrim blending stone & sky seamlessly into Light/Dark themes */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/30 via-sky-200/[0.06] to-indigo-100/15 dark:from-black/80 dark:via-indigo-950/20 dark:to-black/25" />
+
+          {/* Top-right subtle signal telemetry pill (subtle foreground depth shift) */}
+          <div
+            style={{
+              transform: `translate3d(${(parallax.x * -0.35).toFixed(1)}px, ${(parallax.y * -0.35).toFixed(1)}px, 0)`,
+            }}
+            className="absolute top-4 right-4 sm:top-5 sm:right-5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono bg-white/70 dark:bg-black/50 backdrop-blur-xl border border-white/65 dark:border-white/15 text-[#1D1D1F] dark:text-white/90 shadow-sm transition-transform duration-500 ease-out"
+          >
             {glitchOverdrive ? (
               <>
                 <Zap className="w-3 h-3 text-fuchsia-500 dark:text-fuchsia-400" />
@@ -179,8 +210,13 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
             )}
           </div>
 
-          {/* VisionOS-style floating frosted glass caption & clock */}
-          <div className="absolute inset-x-4 bottom-4 sm:inset-x-5 sm:bottom-5 p-4 rounded-2xl bg-white/70 dark:bg-black/45 backdrop-blur-2xl border border-white/60 dark:border-white/15 text-[#1D1D1F] dark:text-white shadow-[0_8px_28px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.45)] flex items-end justify-between gap-4">
+          {/* VisionOS-style floating frosted glass caption & clock (subtle foreground depth shift) */}
+          <div
+            style={{
+              transform: `translate3d(${(parallax.x * -0.25).toFixed(1)}px, ${(parallax.y * -0.25).toFixed(1)}px, 0)`,
+            }}
+            className="absolute inset-x-4 bottom-4 sm:inset-x-5 sm:bottom-5 p-4 rounded-2xl bg-white/75 dark:bg-black/50 backdrop-blur-2xl border border-white/65 dark:border-white/15 text-[#1D1D1F] dark:text-white shadow-[0_8px_28px_rgba(0,0,0,0.09)] dark:shadow-[0_12px_32px_rgba(0,0,0,0.5)] flex items-end justify-between gap-4 transition-transform duration-500 ease-out"
+          >
             <div className="min-w-0">
               <div className="text-xs text-zinc-600 dark:text-white/70 truncate">
                 {PROFILE.location[lang]}
