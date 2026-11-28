@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import {
   ArrowRight,
+  BookOpen,
   Compass,
   Download,
   Languages,
@@ -140,6 +141,20 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({
         run: () => {
           onClose();
           onOpenQr();
+        },
+      },
+      {
+        id: 'act-open-blog',
+        group: 'action',
+        label: lang === 'zh' ? '打开：CSDN 博客（旧日存档）' : 'Open CSDN Blog (Archive)',
+        hint: 'CSDN',
+        keywords: 'blog csdn 博客 文章 旧日 存档',
+        icon: <BookOpen className="w-4 h-4 text-orange-500" />,
+        run: () => {
+          if (PROFILE.contact.blogUrl) {
+            window.open(PROFILE.contact.blogUrl, '_blank', 'noopener,noreferrer');
+          }
+          onClose();
         },
       },
       {

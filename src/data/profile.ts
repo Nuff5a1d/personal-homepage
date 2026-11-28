@@ -78,8 +78,8 @@ export const PROFILE = {
     en: '',
   },
   heroDescription: {
-    zh: '用 AI 写趁手的效率工具，也拍有情绪的视听作品——把脑海里的 Idea，一一做成真实存在的东西。',
-    en: 'Building sharp AI tools and atmospheric visual works — turning sparks of ideas into shipped reality.',
+    zh: '白天写趁手的千川投流监控与自动化工具，闲暇用代码画点浪漫 MV——理性工程与感性折腾都在这里。',
+    en: 'Building full-funnel Qianchuan tools for real work, coding atmospheric MVs for pure joy — where sharp engineering meets glitch romance.',
   },
   statusBadge: {
     zh: 'K神の主页',
@@ -144,8 +144,8 @@ export const PROFILE = {
   /** 个人核心标签 / 能力栈 */
   skills: [
     { label: { zh: '故障浪漫', en: 'Glitch Romance' }, level: '' },
-    { label: { zh: 'Chrome 插件', en: 'Extensions' }, level: '' },
-    { label: { zh: 'AI 音乐 MV', en: 'AI Music MV' }, level: '' },
+    { label: { zh: '全链路千川插件', en: 'Qianchuan Extension' }, level: '' },
+    { label: { zh: '用代码画 MV', en: 'Code-Drawn MV' }, level: '' },
     { label: { zh: '电商自动化', en: 'Automation' }, level: '' },
   ],
 
@@ -161,6 +161,11 @@ export const PROFILE = {
     douyinUrl: 'https://www.douyin.com/user/MS4wLjABAAAA54yVIZJcTp0TQChSyDIFac3SflhtRz4unP5jFfitYKM?from_tab_name=main',
     email: 'shuorockwell@gmail.com',
     githubUrl: 'https://github.com/Nuff5a1d',
+    blogName: {
+      zh: 'CSDN 博客（很久没更新了）',
+      en: 'CSDN Blog (Archive)',
+    },
+    blogUrl: 'https://blog.csdn.net/qq_44106261?type=blog',
     /**
      * Web3Forms 公开 Access Key（访问 https://web3forms.com/ 填邮箱即可免费获取）
      * 配置后每条留言都会自动发邮件到你的邮箱（含对方填写的微信/邮箱）。
@@ -180,59 +185,59 @@ export const PROFILE = {
       id: 'qianchuan-roi-monitor',
       category: 'tool',
       status: 'live',
-      version: 'v1.3.1',
+      version: 'v1.3.3',
       featured: true,
       visualType: 'roi',
       title: {
         zh: 'Kamisama · 全链路千川监控',
-        en: 'Kamisama · Qianchuan ROI Monitor',
+        en: 'Kamisama · Qianchuan Monitor',
       },
       subtitle: {
-        zh: '巨量千川秒级盯盘 + AI 30分钟总结报告 · Chrome 插件（开源）',
-        en: 'Real-Time OceanEngine ROI Sentinel & AI Summary · Chrome Extension',
+        zh: 'ROI / 消耗 / 余额 / 预算撞墙与灰保过保监控 · Chrome 插件',
+        en: 'ROI, Spend, Balance, Budget Cap & Protection Guard · Chrome Extension',
       },
       summary: {
-        zh: '不再靠肉眼死盯大屏。深度适配千川乘方、调控、全域推商品、推直播间与抖店罗盘，秒级监控 ROI、预算撞墙、灰保过保与掉登录/断流异常；内置 30 分钟趋势总结报告（支持豆包 / 智谱 / DeepSeek / 通义 AI 分析），并通过企微、PushPlus、飞书、钉钉、Bark 直达手机。',
-        en: 'Stop staring at ad dashboards 24/7. Tracks ROI, budget caps, and account health across Qianchuan & Compass in real time, with 30-min AI trend summaries (Doubao/Zhipu/DeepSeek/Qwen) and 5-channel mobile alerts.',
+        zh: '全链路千川 Chrome 扩展（v1.3.3）。秒级盯盘 ROI、消耗、账户可用余额、预算撞墙与灰保过保；支持单类告警冷却合并、30 分钟内置逻辑 / AI 复盘总结与五大渠道手机实时推送。',
+        en: 'Full-funnel Qianchuan Chrome extension (v1.3.3). Tracks ROI, spend, account balance, budget caps & protection status with per-type cooldown merging, 30-min built-in/AI summary reports, and 5-channel mobile alerts.',
       },
       story: {
-        zh: '最初只是不想再为盯盘耗尽精力，用 AI 一边拆解千川复杂的双表 DOM 与虚拟滚动结构，一边从 v1.0 迭代到 v1.3.1。把真实投流踩过的坑——目标 ROI 干扰列、预算撞墙、灰保过保、SPA 切页串位、页面静默卡死——全部写成了稳定可靠的防守机制。',
-        en: 'Born from the frustration of manually watching ad spend. Iterated rapidly with AI to v1.3.1, solving split DOM headers, budget-cap alerts, virtual scrolling, target-ROI noise, and silent page freezes.',
+        zh: '最初只是不想再为盯盘耗尽精力，用 AI 一边拆解千川复杂的双表 DOM 与虚拟滚动结构，一边从 v1.0 迭代到 v1.3.3。把真实投流踩过的坑——目标 ROI 干扰列、预算撞墙、灰保过保、余额预警、异常冷却合并、页面静默卡死——全部写成了稳定可靠的防守机制。',
+        en: 'Born from the frustration of manually watching ad spend. Iterated rapidly with AI to v1.3.3, solving split DOM headers, budget-cap alerts, balance warnings, cooldown merging, virtual scrolling, and silent page freezes.',
       },
       highlights: [
         {
-          zh: '全链路兼容千川乘方、调控、全域推商品、推直播间与抖店罗盘，精准规避「目标/出价 ROI」干扰列',
-          en: 'Full coverage across Qianchuan & Compass tables, filtering out target/bid ROI noise columns',
+          zh: '全维度日常盯盘：ROI、消耗、账户可用余额预警、预算撞墙与灰保过保，异常计划四色标色并支持一键定位',
+          en: 'Full live dashboard: ROI, spend, low-balance warning, budget caps & protection status with 4-color row highlights',
         },
         {
-          zh: 'ROI 波动 + 预算撞墙 + 灰保过保 + 掉登录态/接口报错/数据断流全方位健康哨兵',
-          en: 'Real-time ROI, budget-cap, protection status, session timeout, and stale-data health guards',
+          zh: '单类异常独立冷却与批量合并推送，彻底告别告警刷屏；支持默认日常盯盘视图与自动拉齐列表数据',
+          en: 'Per-type alert cooldowns & batch merging to eliminate notification spam, with clean default dashboard view',
         },
         {
-          zh: '内置 30 分钟趋势总结报告，支持接入豆包 / 智谱 / DeepSeek / 通义千问 AI 复盘分析',
-          en: 'Built-in 30-min trend reports powered by Doubao, Zhipu, DeepSeek, or Qwen AI',
+          zh: '每 30 分钟自动输出投流复盘总结：免接接口内置规则即可理清大盘，也可接入 DeepSeek / 豆包 / 智谱 / 通义生成精细调优建议',
+          en: 'Auto 30-min summary reports via built-in rules (zero API needed) or optional DeepSeek / Doubao / Zhipu / Qwen AI',
         },
         {
-          zh: '五大渠道三层持久化直达手机：企业微信（个人微信直收）、PushPlus、飞书、钉钉、Bark',
-          en: '5-channel mobile push: WeCom, PushPlus, Feishu, DingTalk, Bark & desktop sound',
+          zh: '纯本地运行开源免费，支持企业微信 / 个人微信 (PushPlus) / Bark / 飞书 / 钉钉五大渠道手机实时触达',
+          en: '100% local & open-source with 5-channel mobile push (WeCom / PushPlus / Bark / Feishu / DingTalk)',
         },
       ],
       tags: ['Chrome MV3', '免 GitHub 直下', 'AI 复盘', '五通道告警'],
-      downloadLabel: { zh: '直接下载安装包 (v1.3.1)', en: 'Download ZIP (v1.3.1)' },
-      downloadUrl: './downloads/Kamisama-Qianchuan-v1.3.1.zip',
-      downloadFileName: 'Kamisama-Qianchuan-v1.3.1.zip',
+      downloadLabel: { zh: '直接下载安装包 (v1.3.3)', en: 'Download ZIP (v1.3.3)' },
+      downloadUrl: './downloads/Kamisama-Qianchuan-v1.3.3.zip',
+      downloadFileName: 'Kamisama-Qianchuan-v1.3.3.zip',
       installSteps: [
         {
-          zh: '点击下方「直接下载安装包」获取 Kamisama-Qianchuan-v1.3.1.zip，双击解压出文件夹。',
-          en: 'Click "Download ZIP" below and unzip Kamisama-Qianchuan-v1.3.1.zip into a folder.',
+          zh: '点击下方「直接下载安装包」获取 Kamisama-Qianchuan-v1.3.3.zip，双击解压出文件夹（老版本直接覆盖原目录重载即可保留配置）。',
+          en: 'Click "Download ZIP" below and unzip Kamisama-Qianchuan-v1.3.3.zip into a folder (overwrite existing folder to keep settings).',
         },
         {
           zh: '在 Chrome 地址栏输入 chrome://extensions（Edge 输入 edge://extensions），打开右上角「开发者模式」。',
           en: 'Open chrome://extensions (or edge://extensions) and enable "Developer mode" at top right.',
         },
         {
-          zh: '点击左上角「加载已解压的扩展程序」，选中解压后的文件夹即可启用，无需 GitHub 账号。',
-          en: 'Click "Load unpacked" and select the extracted folder — no GitHub account required.',
+          zh: '点击左上角「加载已解压的扩展程序」，选中含 manifest.json 的文件夹，刷新千川页面即可开始监控。',
+          en: 'Click "Load unpacked", select the folder containing manifest.json, and refresh Qianchuan to start.',
         },
       ],
       linkLabel: { zh: '前往 GitHub 查看源码', en: 'View on GitHub' },
@@ -242,40 +247,40 @@ export const PROFILE = {
       id: 'ai-music-mv',
       category: 'creative',
       status: 'live',
-      version: 'Series',
+      version: 'Hobby',
       featured: true,
       visualType: 'music',
       title: {
-        zh: 'AI 音乐 MV 视听创作',
-        en: 'AI Music & MV Studio',
+        zh: '用代码画MV--个人爱好',
+        en: 'Coding MVs — Personal Hobby',
       },
       subtitle: {
-        zh: 'AIGC 词曲编排 · 电影感分镜视觉',
-        en: 'AIGC Audio-Visual Direction & Storytelling',
+        zh: '个人爱好 · 用代码逐帧绘制音乐与视觉情绪',
+        en: 'Personal Hobby · Drawing Music Videos Frame-by-Frame with Code',
       },
       summary: {
-        zh: '探索声音与画面的 AI 协同美学。从旋律情绪设计、歌词打磨，到一致性的电影级分镜画面与卡点剪辑，将脑海里的氛围完整拍成 MV，并在抖音持续分享幕后创作流程。',
-        en: 'Exploring cinema-grade storytelling powered by generative audio and video. From emotional composition and lyric craft to consistent visual storyboards and beat-synced edits.',
+        zh: '纯粹的个人爱好。试着用代码一帧一帧“画”出跟着鼓点呼吸的音乐 MV——把数学曲线、SVG/Canvas 图形动效与旋律情绪揉在一起，在抖音记录这些天马行空的视听折腾。',
+        en: 'Pure personal hobby: drawing beat-synced music videos frame-by-frame with code — blending generative SVG/Canvas motion, math curves, and melody on Douyin.',
       },
       story: {
-        zh: '做效率工具偏向理性与逻辑，而做 AI 音乐 MV 是我释放感性与审美的出口。把同一套工程化拆解思维用在视觉分镜和提示词控制上，也能做出很有电影质感的短片。',
-        en: 'While tools satisfy engineering rigor, AI music videos are where emotion and visual craft meet. Applying structured prompt pipelines brings film-like consistency to every frame.',
+        zh: '写工具插件是为了解决真实的业务痛点，而「用代码画 MV」则是纯粹留给热爱的自留地。不靠传统剪辑模板，直接让代码驱动每一帧光影、线条和节拍，把脑海里的画面变成会动的浪漫。',
+        en: 'Tools solve real business problems, while coding MVs is my sandbox for pure joy — letting code drive every frame of light, line art, and beat.',
       },
       highlights: [
         {
-          zh: '全链路 AIGC 生产流：作词作曲 → 角色与光影风格定调 → 分镜生图/视频 → 节拍剪辑',
-          en: 'End-to-end AIGC pipeline: songcraft → art direction → video generation → rhythm editing',
+          zh: '代码驱动逐帧动画：用 HTML5 SVG / Canvas / Remotion 将音乐节拍映射为画面运动函数',
+          en: 'Deterministic Frame=f(t) code animation mapping musical beats directly to SVG/Canvas motion',
         },
         {
-          zh: '沉淀可复用的六段式镜头提示词模板，显著提升画面质感与镜头连贯性',
-          en: 'Reusable cinematic prompt templates for stronger lighting and shot continuity',
+          zh: '从律动、色彩氛围到歌词排版全部自己折腾，享受把想法画出来的纯粹快乐',
+          en: 'Hand-crafted rhythm, color mood, and lyric choreography purely out of love for the craft',
         },
         {
-          zh: '同步在抖音 & 朋友圈分享完整成片与幕后制作思路',
-          en: 'Full MVs and behind-the-scenes workflows shared regularly on Douyin',
+          zh: '成品持续更新在我的专属抖音号，欢迎点开看看',
+          en: 'Finished MVs are shared regularly on my dedicated Douyin account',
         },
       ],
-      tags: ['AI 音乐', 'AI 视频分镜', '视觉叙事', '抖音作品'],
+      tags: ['用代码画MV', '个人爱好', '代码动效', '抖音作品'],
       linkLabel: { zh: '去抖音看成片', en: 'Watch on Douyin' },
       linkUrl: 'https://www.douyin.com/user/MS4wLjABAAAA0-VCIfJQcYIDyz0dD2xahky64U0ZPxJbR30qX4nlvlIBdh0BjWgC-gpGNpgXkaWq?from_tab_name=main',
     },
@@ -320,40 +325,40 @@ export const PROFILE = {
       linkUrl: '#contact',
     },
     {
-      id: 'ai-idea-lab',
+      id: 'csdn-blog-archive',
       category: 'automation',
-      status: 'exploring',
-      version: 'Lab',
+      status: 'live',
+      version: 'Archive',
       visualType: 'lab',
       title: {
-        zh: 'AI 创意实验工坊 · Idea Lab',
-        en: 'AI Idea Lab & Micro-Tools',
+        zh: 'CSDN 个人博客 · 旧日存档',
+        en: 'CSDN Tech Blog · Archive',
       },
       subtitle: {
-        zh: '持续落地的小工具与个人实验合集',
-        en: 'Rapid Prototypes & Weekend Experiments',
+        zh: '早年技术笔记与折腾记录（很久没更新了）',
+        en: 'Early Technical Notes & Dev Logs (Long Unupdated Archive)',
       },
       summary: {
-        zh: '我的灵感蓄水池。每当工作或生活里冒出一个「要是有个小工具就好了」的念头，就会在这里快速用 AI 做出最小可用原型，验证价值后再升级为正式产品。',
-        en: 'My personal sandbox for turning everyday friction into rapid AI prototypes. Whenever a "wish this existed" moment strikes, it starts here.',
+        zh: '我的个人技术博客，记录了早年写代码和踩坑的点滴。虽然已经很久没更新了，依然留作一块时间胶囊挂在这里，点开即可直达 CSDN 主页。',
+        en: 'My earlier technical blog documenting past coding explorations and debugging notes. It hasn’t been updated in a while, kept here as a time capsule with a direct link to CSDN.',
       },
       story: {
-        zh: 'AI 时代最稀缺的不是代码本身，而是敏锐的痛点洞察和把想法真正落地的执行力。如果你也有好玩的点子，欢迎在下方留言板一起碰撞。',
-        en: 'In the AI era, code is abundant — taste, real-world insight, and execution are the real edge. Drop an idea in the message board below if you want to jam.',
+        zh: '回头翻看以前写下的技术文章，像是在和几年前的自己隔空击掌。现在更多直接用作品说话，旧博客就作为成长轨迹留个入口。',
+        en: 'Reading old dev notes feels like high-fiving my past self. Today I mostly let shipped projects speak, keeping the blog linked here as a milestone.',
       },
       highlights: [
         {
-          zh: '坚持 48 小时原型原则：先跑通核心价值，再打磨视觉与细节',
-          en: '48-hour prototype rule: prove real value first, then polish to Apple-grade craft',
+          zh: '收录早年开发笔记与问题排查记录，点击按钮直达 CSDN 博客主页',
+          en: 'Houses early engineering notes and troubleshooting logs — click to visit on CSDN',
         },
         {
-          zh: '覆盖浏览器提效、数据监控脚本、创意内容工作流等多个方向',
-          en: 'Spans browser extensions, data monitors, and creative media pipelines',
+          zh: '仅保留原站直达链接，原汁原味存档',
+          en: 'Direct external link only, preserving the original archive as-is',
         },
       ],
-      tags: ['快速原型', 'AI Agent', '开放共创'],
-      linkLabel: { zh: '提交你的点子', en: 'Pitch an Idea' },
-      linkUrl: '#contact',
+      tags: ['CSDN', '个人博客', '旧日存档'],
+      linkLabel: { zh: '前往 CSDN 博客', en: 'Visit CSDN Blog' },
+      linkUrl: 'https://blog.csdn.net/qq_44106261?type=blog',
     },
   ] as ProjectItem[],
 
@@ -373,8 +378,8 @@ export const PROFILE = {
         en: 'Why naive DOM scripts break on modern ad dashboards — lessons from handling virtual tables, split headers, and SPA route switching.',
       },
       shareCopy: {
-        zh: '刚把「千川 ROI 实时监控插件」升级到 v1.3.1，总结了用 AI 做插件踩过的 4 个真实大坑，主页里可以看完整复盘与功能细节。',
-        en: 'Just shipped v1.3.1 of my Qianchuan ROI Live Monitor extension — wrote down 4 real engineering pitfalls I solved along the way.',
+        zh: '刚把「Kamisama 全链路千川监控插件」升级到 v1.3.3，主页里可以直接下载体验。',
+        en: 'Just shipped v1.3.3 of Kamisama Qianchuan Monitor — available for direct download on my homepage.',
       },
       paragraphs: [
         {
@@ -530,8 +535,8 @@ export const UI_TEXT = {
     filters: {
       all: { zh: '全部作品', en: 'All' },
       tool: { zh: '效率插件', en: 'Extensions' },
-      creative: { zh: 'AI 音乐 MV', en: 'AI Music & MV' },
-      automation: { zh: '自动化 & 实验', en: 'Automation & Lab' },
+      creative: { zh: '用代码画 MV', en: 'Code MV' },
+      automation: { zh: '自动化 & 博客', en: 'Automation & Blog' },
     },
     status: {
       live: { zh: '已上线', en: 'Live' },
@@ -591,8 +596,8 @@ export const UI_TEXT = {
   },
   footer: {
     builtWith: {
-      zh: 'Crafted with Gemini 4 Neon',
-      en: 'Crafted with Gemini 4 Neon',
+      zh: '',
+      en: '',
     },
   },
 };

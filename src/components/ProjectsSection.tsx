@@ -90,7 +90,7 @@ const RoiMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
           {lang === 'zh' ? '秒级监控中' : 'Live Guard'}
         </span>
-        <span className="font-mono text-zinc-500">v1.3.1</span>
+        <span className="font-mono text-zinc-500">v1.3.3</span>
       </div>
 
       <div className="flex items-end justify-between gap-3">
@@ -203,7 +203,7 @@ const MusicMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
           </button>
           <div className="min-w-0">
             <div className="text-xs font-medium text-white truncate">
-              {lang === 'zh' ? 'AI 视听情绪片' : 'AI Visual Album'}
+              {lang === 'zh' ? '用代码画 MV · 个人爱好' : 'Code-Drawn MV · Hobby'}
             </div>
             <div className="text-[11px] font-mono text-zinc-400 mt-0.5 truncate">
               {playing ? `${timeFormatted} / 03:34` : lang === 'zh' ? '已暂停 · 点击播放' : 'Paused'}
@@ -294,8 +294,8 @@ const PipelineMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
 };
 
 const IDEA_PROMPTS = {
-  zh: ['千川异常语音播报', '抖音分镜一键拆帧', 'AI 提示词灵感库', '商品合规词秒检'],
-  en: ['ROI Voice Sentinel', 'MV Beat Storyboarder', 'Prompt Vault CLI', 'Instant SKU Linter'],
+  zh: ['blog.csdn.net/qq_44106261', '旧日技术笔记 · 存档', '很久没更新 · 留作纪念'],
+  en: ['blog.csdn.net/qq_44106261', 'Early Dev Notes · Archive', 'Time Capsule Link'],
 };
 
 const IdeaLabMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
@@ -317,7 +317,7 @@ const IdeaLabMiniPreview: React.FC<{ lang: Lang }> = ({ lang }) => {
         <span className="w-1.5 h-3.5 bg-purple-500 dark:bg-purple-400 animate-pulse shrink-0" />
       </span>
       <span className="font-mono text-[11px] text-purple-500 dark:text-purple-400 shrink-0">
-        48h · ∞
+        CSDN
       </span>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Command, Copy, QrCode, Sparkles, X } from 'lucide-react';
+import { Command, Copy, QrCode, X } from 'lucide-react';
 import { CommandPalette } from './components/CommandPalette';
 import { ContactSection } from './components/ContactSection';
 import { HeroBento } from './components/HeroBento';
@@ -143,10 +143,6 @@ export default function App() {
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-2.5">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/[0.035] dark:bg-white/[0.05] border border-black/[0.05] dark:border-white/[0.08] text-zinc-600 dark:text-zinc-300 font-medium">
-            <Sparkles className="w-3 h-3 text-[#0071E3] dark:text-[#2997FF]" />
-            <span>{UI_TEXT.footer.builtWith[lang]}</span>
-          </span>
           <button
             type="button"
             onClick={() => setPaletteOpen(true)}

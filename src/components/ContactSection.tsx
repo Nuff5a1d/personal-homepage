@@ -322,6 +322,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
               <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] shrink-0" />
             </a>
+
+            {PROFILE.contact.blogUrl && (
+              <a
+                href={PROFILE.contact.blogUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between p-3.5 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] hover:bg-black/[0.055] dark:hover:bg-white/[0.08] transition-colors group"
+              >
+                <div className="flex items-center gap-3 min-w-0">
+                  <BookOpen className="w-4 h-4 text-orange-500 dark:text-orange-400 shrink-0" />
+                  <span className="text-sm font-medium text-[#1D1D1F] dark:text-white truncate">
+                    {PROFILE.contact.blogName[lang]}
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-[#0071E3] dark:group-hover:text-[#2997FF] shrink-0" />
+              </a>
+            )}
           </div>
         </BentoCard>
 
