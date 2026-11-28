@@ -93,28 +93,23 @@ export const HeroBento: React.FC<HeroBentoProps> = ({
               </div>
             </div>
 
-            {/* Lead Editorial Intro */}
-            <p className="text-[18px] sm:text-[21px] lg:text-[23px] font-medium tracking-[-0.015em] leading-[1.65] text-[#1D1D1F] dark:text-zinc-100 max-w-2xl">
-              {PROFILE.heroDescription[lang]}
-            </p>
-
-            {/* Inline Editorial Quote Block */}
+            {/* Primary Editorial Manifesto Quote */}
             <blockquote
               id="manifesto"
-              className="relative mt-5 pl-4 py-0.5 max-w-2xl scroll-mt-28"
+              className="relative mt-2 pl-5 py-1 max-w-2xl scroll-mt-28"
             >
-              {/* Restrained 2px titanium-blue vertical accent line */}
+              {/* Restrained 2.5px titanium-blue vertical accent line */}
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-1 bottom-1 w-[2px] rounded-full bg-gradient-to-b from-[#0071E3] via-[#2997FF]/60 to-transparent dark:from-[#2997FF] dark:via-sky-300/45 dark:to-transparent"
+                className="absolute left-0 top-1.5 bottom-1.5 w-[2.5px] rounded-full bg-gradient-to-b from-[#0071E3] via-[#2997FF]/60 to-transparent dark:from-[#2997FF] dark:via-sky-300/45 dark:to-transparent"
               />
-              <p className="text-[13.5px] sm:text-[14.5px] leading-[1.82] text-zinc-500 dark:text-zinc-400">
+              <p className="text-[16px] sm:text-[18px] lg:text-[20px] leading-[1.82] tracking-[-0.01em] text-zinc-500 dark:text-zinc-400">
                 {PROFILE.aiManifesto.segments.map((seg, idx) => (
                   <span
                     key={idx}
                     className={
                       seg.highlight
-                        ? 'text-[#1D1D1F] dark:text-zinc-100 font-medium'
+                        ? 'text-[#1D1D1F] dark:text-zinc-100 font-semibold'
                         : undefined
                     }
                   >

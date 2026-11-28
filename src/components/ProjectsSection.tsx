@@ -360,7 +360,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ lang }) => {
       ? 'grid-cols-1 lg:grid-cols-2'
       : filteredProjects.length === 2
         ? 'grid-cols-1 md:grid-cols-2'
-        : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4';
+        : filteredProjects.length === 3
+          ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+          : 'grid-cols-1 md:grid-cols-2 xl:grid-cols-4';
 
   return (
     <section id="projects" className="scroll-mt-24 pt-14 sm:pt-18">

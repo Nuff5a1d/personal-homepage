@@ -324,42 +324,6 @@ export const PROFILE = {
       linkLabel: { zh: '预约内测交流', en: 'Join Beta Talk' },
       linkUrl: '#contact',
     },
-    {
-      id: 'csdn-blog-archive',
-      category: 'automation',
-      status: 'live',
-      version: 'Archive',
-      visualType: 'lab',
-      title: {
-        zh: 'CSDN 个人博客 · 旧日存档',
-        en: 'CSDN Tech Blog · Archive',
-      },
-      subtitle: {
-        zh: '早年技术笔记与折腾记录（很久没更新了）',
-        en: 'Early Technical Notes & Dev Logs (Long Unupdated Archive)',
-      },
-      summary: {
-        zh: '我的个人技术博客，记录了早年写代码和踩坑的点滴。虽然已经很久没更新了，依然留作一块时间胶囊挂在这里，点开即可直达 CSDN 主页。',
-        en: 'My earlier technical blog documenting past coding explorations and debugging notes. It hasn’t been updated in a while, kept here as a time capsule with a direct link to CSDN.',
-      },
-      story: {
-        zh: '回头翻看以前写下的技术文章，像是在和几年前的自己隔空击掌。现在更多直接用作品说话，旧博客就作为成长轨迹留个入口。',
-        en: 'Reading old dev notes feels like high-fiving my past self. Today I mostly let shipped projects speak, keeping the blog linked here as a milestone.',
-      },
-      highlights: [
-        {
-          zh: '收录早年开发笔记与问题排查记录，点击按钮直达 CSDN 博客主页',
-          en: 'Houses early engineering notes and troubleshooting logs — click to visit on CSDN',
-        },
-        {
-          zh: '仅保留原站直达链接，原汁原味存档',
-          en: 'Direct external link only, preserving the original archive as-is',
-        },
-      ],
-      tags: ['CSDN', '个人博客', '旧日存档'],
-      linkLabel: { zh: '前往 CSDN 博客', en: 'Visit CSDN Blog' },
-      linkUrl: 'https://blog.csdn.net/qq_44106261?type=blog',
-    },
   ] as ProjectItem[],
 
   /** 实战手记 / 思考专栏（适合发抖音 & 朋友圈引流阅读） */
@@ -536,7 +500,7 @@ export const UI_TEXT = {
       all: { zh: '全部作品', en: 'All' },
       tool: { zh: '效率插件', en: 'Extensions' },
       creative: { zh: '用代码画 MV', en: 'Code MV' },
-      automation: { zh: '自动化 & 博客', en: 'Automation & Blog' },
+      automation: { zh: '电商自动化', en: 'Automation' },
     },
     status: {
       live: { zh: '已上线', en: 'Live' },
